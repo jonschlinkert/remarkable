@@ -28,6 +28,11 @@ bower:
 bower install remarkable --save
 ```
 
+[jsDelivr CDN](http://www.jsdelivr.com/#!remarkable) for browser:
+```htm
+<script src="//cdn.jsdelivr.net/remarkable/{version}/remarkable.min.js"></script>
+```
+
 
 ## Usage
 
