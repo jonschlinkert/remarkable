@@ -28,6 +28,7 @@ bower:
 bower install remarkable --save
 ```
 
+CDNs for browser: [jsDeliver]([jsDelivr CDN](http://www.jsdelivr.com/#!remarkable))
 
 ## Usage
 
