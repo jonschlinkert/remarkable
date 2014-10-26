@@ -77,7 +77,7 @@ var Remarkable = require('remarkable');
 var md = new Remarkable('commonmark');
 ```
 
-### Highligh fenced blocks
+### Highlight fenced blocks
 
 To highlight content of fenced block, assing function to `highlight` option:
 
