@@ -6,7 +6,7 @@ remarkable
 
 Markdown parser done right. Fast and easy to extend.
 
-__[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
+__[Live demo](https://jonschlinkert.github.io/remarkable/demo/)__
 
 - Configurable syntax! You can add new rules and even replace existing ones.
 - Implements [CommonMark](http://commonmark.org/) spec + extentions
