@@ -142,6 +142,16 @@
     // Activate tooltips
     $('._tip').tooltip({ container: 'body' });
 
+    // sync scrolling
+    $("#sourceCodeTextArea").scroll(function () {
+        $("#resultDiv").scrollTop($("#sourceCodeTextArea").scrollTop());
+        $("#resultDiv").scrollLeft($("#sourceCodeTextArea").scrollLeft());
+    });
+    $("#resultDiv").scroll(function () {
+        $("#sourceCodeTextArea").scrollTop($("#resultDiv").scrollTop());
+        $("#sourceCodeTextArea").scrollLeft($("#resultDiv").scrollLeft());
+    });
+
     // Set default option values and option listeners
     _.forOwn(defaults, function (val, key) {
       if (key === 'highlight') { return; }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Remarkable demo</title>
@@ -105,7 +105,7 @@ console.log(md.render('# Remarkable rulezz!'));
       <div class="row full-height">
         <div class="col-xs-6 full-height">
           <div class="demo-control"><a href="#" class="source-clear">clear</a><a id="permalink" href="./" title="Share this snippet as link"><strong>permalink</strong></a></div>
-          <textarea class="source full-height">---
+          <textarea id="sourceCodeTextArea" class="source full-height">---
 __Advertisement :)__
 
 - __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
@@ -275,7 +275,7 @@ With a reference later in the document defining the URL location:
         </div>
         <section class="col-xs-6 full-height">
           <div class="demo-control"><a href="#" data-result-as="html">html</a><a href="#" data-result-as="src">source</a><a href="#" data-result-as="debug">debug</a></div>
-          <div class="result-html full-height"></div>
+          <div id="resultDiv" class="result-html full-height"></div>
           <pre class="result-src full-height"><code class="result-src-content full-height"></code></pre>
           <pre class="result-debug full-height"><code class="result-debug-content full-height"></code></pre>
         </section>
