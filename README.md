@@ -7,7 +7,7 @@
 
 __[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
 
-- Supports the [CommonMark](http://commonmark.org/) spec + extentions
+- Supports the [CommonMark](http://commonmark.org/) spec + extensions
   (URL autolinking, typographer).
 - Configurable syntax! You can add new rules and even replace existing ones.
 - High speed! See the [benchmarks](./benchmark).
@@ -143,7 +143,7 @@ var md = new Remarkable({
 ```
 
 
-### Syntax extentions
+### Syntax extensions
 
 Enabled by default:
 
@@ -155,7 +155,7 @@ Disabled by default:
 - __\<ins>__ - `++inserted text++` (experimental)
 - __\<mark>__ - `==marked text==` (experimental)
 
-__*__ Experimental extentions can be changed later for something like [Critic Markup](http://criticmarkup.com/), but you will 
+__*__ Experimental extensions can be changed later for something like [Critic Markup](http://criticmarkup.com/), but you will 
 still be able to use old-style rules via external plugins if you prefer.
 
 

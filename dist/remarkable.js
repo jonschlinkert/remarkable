@@ -3269,7 +3269,7 @@ function ParserInline() {
   this._rules = [];
 
   // Rule to skip pure text
-  // - '{}$%@+=:' reserved for extentions
+  // - '{}$%@+=:' reserved for extensions
   this.textMatch = /[\n\\`*_\[\]!&<{}$%@~+=:]/;
 
   // By default CommonMark allows too much in links
