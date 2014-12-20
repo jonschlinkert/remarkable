@@ -28,10 +28,9 @@ var options = cli.parseArgs();
 
 function readFile(filename, encoding, callback) {
   if (options.file === '-') {
-    // read from stdin
-
     var chunks = [];
 
+    // read from stdin
     process.stdin.on('data', function(chunk) {
       chunks.push(chunk);
     });
@@ -57,7 +56,6 @@ readFile(options.file, 'utf8', function (err, input) {
     }
 
     console.error(err.stack || err.message || String(err));
-
     process.exit(1);
   }
 
@@ -70,14 +68,11 @@ readFile(options.file, 'utf8', function (err, input) {
 
   try {
     output = md.render(input);
-
   } catch (e) {
     console.error(e.stack || e.message || String(e));
-
     process.exit(1);
   }
 
   process.stdout.write(output);
-
   process.exit(0);
 });

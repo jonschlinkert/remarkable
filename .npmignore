@@ -1,8 +1,16 @@
-benchmark/
+node_modules/
 coverage/
+*.DS_Store
+*.sublime*
+
+
+# npmignore
+benchmark/
 demo/
 support/
 test/
 .*
 Makefile
-
+verbfile.js
+CHANGELOG.md
+CONTRIBUTING.md
