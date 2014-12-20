@@ -27,47 +27,38 @@ fs.readdirSync(IMPLS_DIRECTORY).sort().forEach(function (name) {
 });
 
 
-var SAMPLES_DIRECTORY = path.join(__dirname, 'samples');
-var SAMPLES = [];
+var FIXTURES_DIRECTORY = path.join(__dirname, 'fixtures');
+var FIXTURES = [];
 
-fs.readdirSync(SAMPLES_DIRECTORY).sort().forEach(function (sample) {
-  var filepath = path.join(SAMPLES_DIRECTORY, sample),
-      extname  = path.extname(filepath),
-      basename = path.basename(filepath, extname);
-
-  var content = {};
+fs.readdirSync(FIXTURES_DIRECTORY).sort().forEach(function (sample) {
+  var filepath = path.join(FIXTURES_DIRECTORY, sample);
+  var extname  = path.extname(filepath);
+  var basename = path.basename(filepath, extname);
+  var content  = {};
 
   content.string = fs.readFileSync(filepath, 'utf8');
-
-  var title    = util.format('(%d bytes)', content.string.length);
+  var title = util.format('(%d bytes)', content.string.length);
 
   function onComplete() {
     cursor.write('\n');
   }
 
-
   var suite = new Benchmark.Suite(title, {
-
     onStart: function onStart() {
       console.log('\nSample: %s %s', sample, title);
     },
-
     onComplete: onComplete
-
   });
 
 
   IMPLS.forEach(function (impl) {
     suite.add(impl.name, {
-
       onCycle: function onCycle(event) {
         cursor.horizontalAbsolute();
         cursor.eraseLine();
         cursor.write(' > ' + event.target);
       },
-
       onComplete: onComplete,
-
       fn: function () {
         impl.code.run(content.string);
         return;
@@ -76,7 +67,7 @@ fs.readdirSync(SAMPLES_DIRECTORY).sort().forEach(function (sample) {
   });
 
 
-  SAMPLES.push({
+  FIXTURES.push({
     name: basename,
     title: title,
     content: content,
@@ -98,7 +89,7 @@ function select(patterns) {
     });
   }
 
-  SAMPLES.forEach(function (sample) {
+  FIXTURES.forEach(function (sample) {
     if (checkName(sample.name)) {
       result.push(sample);
     }
@@ -112,7 +103,7 @@ function run(files) {
   var selected = select(files);
 
   if (selected.length > 0) {
-    console.log('Selected samples: (%d of %d)', selected.length, SAMPLES.length);
+    console.log('Selected fixtures: (%d of %d)', selected.length, FIXTURES.length);
     selected.forEach(function (sample) {
       console.log(' > %s', sample.name);
     });
@@ -128,8 +119,8 @@ function run(files) {
 module.exports.IMPLS_DIRECTORY   = IMPLS_DIRECTORY;
 module.exports.IMPLS_PATHS       = IMPLS_PATHS;
 module.exports.IMPLS             = IMPLS;
-module.exports.SAMPLES_DIRECTORY = SAMPLES_DIRECTORY;
-module.exports.SAMPLES           = SAMPLES;
+module.exports.FIXTURES_DIRECTORY = FIXTURES_DIRECTORY;
+module.exports.FIXTURES           = FIXTURES;
 module.exports.select            = select;
 module.exports.run               = run;
 
