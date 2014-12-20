@@ -63,7 +63,6 @@ Subscript: H~2~O
 
 ## Blockquotes
 
-
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows.
@@ -225,4 +224,4 @@ __Advertisement :)__
 - __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
   i18n with plurals support and easy syntax.
 
-You will like those projects!
+You'll like those projects! :)
