@@ -1,12 +1,7 @@
 {
   "name": "remarkable",
   "version": "1.5.0",
-  "description": "Markdown parser, done right.",
-  "keywords": [
-    "markdown",
-    "parser",
-    "commonmark"
-  ],
+  "description": "Markdown parser, done right. 100% Commonmark support, extensions, syntax plugins, high speed - all in one.",
   "homepage": "https://github.com/jonschlinkert/remarkable",
   "repository": {
     "type": "git",
@@ -21,8 +16,8 @@
     "test": "make test"
   },
   "dependencies": {
-    "argparse": "~ 0.1.15",
-    "autolinker": "~ 0.15.0"
+    "argparse": "~0.1.15",
+    "autolinker": "~0.15.0"
   },
   "devDependencies": {
     "ansi": "^0.3.0",
@@ -39,5 +34,16 @@
     "stylus": "^0.49.1",
     "mocha": "*",
     "uglify-js": "*"
-  }
+  },
+  "keywords": [
+    "md",
+    "markdown",
+    "process",
+    "text",
+    "parse",
+    "parser",
+    "render",
+    "renderer",
+    "commonmark"
+  ]
 }
