@@ -1,6 +1,10 @@
-If you commit change to Remarked:
+# Contributing
 
-1. Make sure all tests pass.
-2. Run benchmark, make sure that performance not degraded.
-3. DON'T include auto-generated browser & demo files to commit.
-4. Commit to the [dev](https://github.com/jonschlinkert/remarkable/tree/dev) branch, not master.
+> Before submitting a pull request to Remarkable:
+
+1. Run `npm test` to be sure that all tests are passing.
+2. Run `node benchmark` to ensure that performance has not degraded.
+3. DO NOT include any auto-generated browser or demo files in your commit.
+4. Commit to the [dev](https://github.com/jonschlinkert/remarkable/tree/dev) branch, never master.
+
+Thanks!

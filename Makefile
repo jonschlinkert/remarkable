@@ -13,10 +13,10 @@ GITHUB_PROJ := https://github.com//jonschlinkert/${NPM_PACKAGE}
 
 
 demo: lint
-	./support/demodata.js > demo/sample.json
-	jade demo/index.jade -P --obj demo/sample.json
+	./support/demodata.js > demo/example.json
+	jade demo/index.jade -P --obj demo/example.json
 	stylus -u autoprefixer-stylus demo/assets/index.styl
-	rm -rf demo/sample.json
+	rm -rf demo/example.json
 
 lint:
 	eslint --reset ./
