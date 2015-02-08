@@ -47,8 +47,8 @@ console.log(md.render('# Remarkable rulezz!'));
 
 ### Options
 
-By default remarkable is configured to be similar to GFM, but with HTML disabled.
-This is easy to change if you prefer to use different settings.
+By default, remarkable is configured to be similar to GFM, but with HTML disabled.
+This is easy to change if you prefer different settings.
 
 There are two ways to define options.
 
@@ -96,7 +96,7 @@ md.set({
 ```
 
 **Note:** To achieve the best possible performance, don't modify a `Remarkable`
-instance on the fly. If you need multiple configurations it's best to create
+instance on the fly. If you need multiple configurations, create
 multiple instances and initialize each with a configuration that is ideal for
 that instance.
 
@@ -279,8 +279,8 @@ during this project's development.
 
 ## Development / Modification
 
-Parser consists of several responsibilities chains, filled with rules. You can
-reconfigure anyone as you wish. Render also can be modified and extended. See
+Parser consists of several responsibility chains filled with rules. You can
+reconfigure any of them as you wish. Render also can be modified and extended. See
 source code to understand details. Pay attention to these properties:
 
 ```js
@@ -310,8 +310,8 @@ Sample: spec.txt (110610 bytes)
  > marked-0.3.2 x 22.92 ops/sec ±0.79% (41 runs sampled)
 ```
 
-As you can see, `remarkabe` doesn't pay with speed for it's flexibility. Because
-it's written in monomorphyc style and use JIT inline caches effectively.
+As you can see, `remarkable` doesn't pay with speed for it's flexibility. Because
+it's written in monomorphic style and uses JIT inline caches effectively.
 
 
 ## Authors
