@@ -310,7 +310,7 @@ Sample: spec.txt (110610 bytes)
  > marked-0.3.2 x 22.92 ops/sec ±0.79% (41 runs sampled)
 ```
 
-As you can see, `remarkable` doesn't pay with speed for it's flexibility. Because
+As you can see, `remarkable` doesn't pay with speed for its flexibility. Because
 it's written in monomorphic style and uses JIT inline caches effectively.
 
 
