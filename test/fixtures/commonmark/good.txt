@@ -1564,7 +1564,7 @@ src line: 1854
 
 [αγω]
 .
-<p><a href="/%CF%86%CE%BF%CF%85">αγω</a></p>
+<p><a href="/φου">αγω</a></p>
 .
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3361,7 +3361,7 @@ src line: 4026
 .
 [foo](/f&ouml;&ouml; "f&ouml;&ouml;")
 .
-<p><a href="/f%C3%B6%C3%B6" title="föö">foo</a></p>
+<p><a href="/f&amp;ouml;&amp;ouml;" title="föö">foo</a></p>
 .
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3372,7 +3372,7 @@ src line: 4032
 
 [foo]: /f&ouml;&ouml; "f&ouml;&ouml;"
 .
-<p><a href="/f%C3%B6%C3%B6" title="föö">foo</a></p>
+<p><a href="/f&amp;ouml;&amp;ouml;" title="föö">foo</a></p>
 .
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4529,7 +4529,7 @@ src line: 5179
 .
 [link](foo%20b&auml;)
 .
-<p><a href="foo%20b%C3%A4">link</a></p>
+<p><a href="foo%20b&amp;auml;">link</a></p>
 .
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4538,7 +4538,7 @@ src line: 5189
 .
 [link]("title")
 .
-<p><a href="%22title%22">link</a></p>
+<p><a href="&quot;title&quot;">link</a></p>
 .
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
