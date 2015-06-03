@@ -199,14 +199,14 @@ md = new Remarkable('full', {
 // Manually enable rules, disabled by default:
 //
 var md = new Remarkable();
-md.block.ruler.core([
+md.core.ruler.enable([
   'abbr'
 ]);
 md.block.ruler.enable([
   'footnote',
   'deflist'
 ]);
-md.block.ruler.enable([
+md.inline.ruler.enable([
   'footnote_inline',
   'ins',
   'mark',
