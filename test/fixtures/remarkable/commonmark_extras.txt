@@ -132,3 +132,20 @@ Should not throw exception on mailformed URI
 .
 <p><a href="%25test">foo</a></p>
 .
+
+
+Issue #160:
+
+.
+Hello [google] where are you?
+
+Hello [google][] where are you?
+
+Hello [google]  [] where are you?
+
+[google]: https://google.com
+.
+<p>Hello <a href="https://google.com">google</a> where are you?</p>
+<p>Hello <a href="https://google.com">google</a> where are you?</p>
+<p>Hello <a href="https://google.com">google</a> where are you?</p>
+.
