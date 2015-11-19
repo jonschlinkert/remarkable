@@ -44,6 +44,16 @@ console.log(md.render('# Remarkable rulezz!'));
 // => <h1>Remarkable rulezz!</h1>
 ```
 
+If installed globally with `npm`:
+
+```sh
+cat myfile.md | remarkable 
+remarkable --file myfile.md
+
+# get options
+remarkable -h
+```
+
 
 ### Options
 
