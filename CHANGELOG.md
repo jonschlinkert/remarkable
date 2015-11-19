@@ -1,3 +1,9 @@
+1.6.1 / 2015-11-19
+------------------
+
+- npm now installs a script so you can access remarkable from the command
+line.
+
 1.5.0 / 2014-12-12
 ------------------
 
