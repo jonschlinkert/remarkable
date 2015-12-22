@@ -123,10 +123,10 @@
     try {
       if (source) {
         // serialize state - source and options
-        permalink.href = '#md64=' + window.btoa(JSON.stringify({
+        permalink.href = '#md64=' + window.btoa(encodeURI(JSON.stringify({
           source: source,
           defaults: _.omit(defaults, 'highlight')
-        }));
+        })));
       } else {
         permalink.href = '';
       }
@@ -240,7 +240,7 @@
         var cfg;
 
         if (/^#md64=/.test(location.hash)) {
-          cfg = JSON.parse(window.atob(location.hash.slice(6)));
+          cfg = JSON.parse(decodeURI(window.atob(location.hash.slice(6))));
         } else {
           // Legacy mode for old links. Those become broken in github posts,
           // so we switched to base64 encoding.
