@@ -149,3 +149,14 @@ Hello [google]  [] where are you?
 <p>Hello <a href="https://google.com">google</a> where are you?</p>
 <p>Hello <a href="https://google.com">google</a> where are you?</p>
 .
+
+
+Image alt should be unescaped
+
+.
+[Foo\\bar\]]: /url
+
+![Foo\\bar\]]
+.
+<p><img src="/url" alt="Foo\bar]"></p>
+.
