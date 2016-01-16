@@ -75,7 +75,7 @@ describe('API', function () {
   it('plugin', function () {
     var succeeded = false;
 
-    function plugin(self, opts) { if (opts === 'bar') { succeeded = true; } }
+    function plugin(instance, opts) { if (opts === 'bar') { succeeded = true; } }
 
     var md = new Remarkable();
 
@@ -189,10 +189,10 @@ describe('Custom fences', function () {
   it('should render differently overriden rule', function () {
     var md = new Remarkable();
 
-    md.renderer.rules.fence_custom.foo = function (tokens, idx, options, env, self) {
+      md.renderer.rules.fence_custom.foo = function (tokens, idx, options, env, instance) {
       return '<div class="foo">' +
              utils.escapeHtml(tokens[idx].content) +
-             '</div>' + self.getBreak(tokens, idx);
+             '</div>' + instance.getBreak(tokens, idx);
     };
 
     var text = '```foo bar\n' +
