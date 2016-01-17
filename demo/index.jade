@@ -66,6 +66,12 @@ html
           label._tip(title='autoconvert link-like texts to links')
             input#linkify(type='checkbox')
             |  linkify
+        .form-group.not-strict
+          input#linkTarget.form-control._tip(
+          type='input'
+          placeholder='link target'
+          title='target to open link in'
+          )
         .checkbox.not-strict
           label._tip(title='do typographyc replacements, (c) -> © and so on')
             input#typographer(type='checkbox')
