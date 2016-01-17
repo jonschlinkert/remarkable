@@ -183,6 +183,37 @@ describe('Links validation', function () {
 
 });
 
+describe('Link target', function () {
+
+  it('Should not have target when linkTarget is not defined', function () {
+    var md = new Remarkable();
+
+    assert.strictEqual(
+      md.render('[test](http://example.com)'),
+      '<p><a href="http://example.com">test</a></p>\n'
+    );
+  });
+
+  it('Should not have target when linkTarget is empty', function () {
+    var md = new Remarkable({ linkTarget: '' });
+
+    assert.strictEqual(
+      md.render('[test](http://example.com)'),
+      '<p><a href="http://example.com">test</a></p>\n'
+    );
+  });
+
+  it('Should add target to link when linkTarget is specified in options', function () {
+    var md = new Remarkable({ linkTarget: '_blank' });
+
+    assert.strictEqual(
+      md.render('[test](http://example.com)'),
+      '<p><a href="http://example.com" target="_blank">test</a></p>\n'
+    );
+  });
+
+});
+
 
 describe('Custom fences', function () {
 
