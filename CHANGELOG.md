@@ -1,3 +1,18 @@
+1.6.2 / 2016-02-04
+------------------
+
+- Add support for specifying link target
+- StateBlock.getLines should only read from the current line
+- Fix missing space after shortcut links
+- Fix "Manage rules" sample code in README.md
+- Fix encoding of non-ASCII text (fixes #141)
+- Option to not alter links provided for href
+- Add Node.js v0.12 and v4 to Travis config
+- Define bin script for npm
+- Fix "Manage rules" sample code in README.md
+- Fix typo in github proj url in Makefile
+- Fix build by ignoring the demo directory in eslint
+
 1.6.1 / 2015-11-19
 ------------------
 
