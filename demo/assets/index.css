@@ -106,7 +106,6 @@ body {
   right: -60px;
   top: 44px;
   -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
           transform: rotate(45deg);
   width: 230px;
   z-index: 10000;

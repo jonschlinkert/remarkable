@@ -19,6 +19,7 @@
   "scripts": {
     "test": "make test"
   },
+  "bin": "./bin/remarkable.js",
   "dependencies": {
     "argparse": "~0.1.15",
     "autolinker": "~0.15.0"
