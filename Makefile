@@ -9,17 +9,17 @@ REMOTE_NAME ?= origin
 REMOTE_REPO ?= $(shell git config --get remote.${REMOTE_NAME}.url)
 
 CURR_HEAD   := $(firstword $(shell git show-ref --hash HEAD | cut -b -6) master)
-GITHUB_PROJ := https://github.com//jonschlinkert/${NPM_PACKAGE}
+GITHUB_PROJ := https://github.com/jonschlinkert/${NPM_PACKAGE}
 
 
 demo: lint
-	./support/demodata.js > demo/sample.json
-	jade demo/index.jade -P --obj demo/sample.json
+	./support/demodata.js > demo/example.json
+	jade demo/index.jade -P --obj demo/example.json
 	stylus -u autoprefixer-stylus demo/assets/index.styl
-	rm -rf demo/sample.json
+	rm -rf demo/example.json
 
 lint:
-	eslint --reset ./
+	eslint --reset ./bin ./lib ./support ./test
 
 test: lint
 	NODE_ENV=test mocha -R spec

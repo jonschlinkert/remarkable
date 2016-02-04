@@ -1,14 +1,10 @@
----
-__Advertisement :)__
+# Remarkable
 
-- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
-  resize in browser.
-- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
-  i18n with plurals support and easy syntax.
+> Experience real-time editing with Remarkable!
 
-You will like those projects!
+Click the `clear` link to start with a clean slate, or get the `permalink` to share or save your results.
 
----
+***
 
 # h1 Heading
 ## h2 Heading
@@ -22,7 +18,7 @@ You will like those projects!
 
 ___
 
----
+***
 
 ***
 
@@ -66,7 +62,6 @@ Subscript: H~2~O
 
 
 ## Blockquotes
-
 
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
@@ -218,3 +213,15 @@ This is HTML abbreviation example.
 It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 *[HTML]: Hyper Text Markup Language
+
+
+***
+
+__Advertisement :)__
+
+- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
+  resize in browser.
+- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
+  i18n with plurals support and easy syntax.
+
+You'll like those projects! :)
