@@ -23,11 +23,11 @@ function addTests(fPath, markdown, skip) {
         // Also skip tests if file name starts with "_"
         if (!skip && path.basename(fPath)[0] !== '_') {
           it('line ' + line, function () {
-            assert.strictEqual(html, markdown.render(md));
+            assert.strictEqual(markdown.render(md), html);
           });
         } else {
           it.skip('line ' + line, function () {
-            assert.strictEqual(html, markdown.render(md));
+            assert.strictEqual(markdown.render(md), html);
           });
         }
       });
