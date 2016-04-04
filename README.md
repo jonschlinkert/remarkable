@@ -75,6 +75,7 @@ var md = new Remarkable({
   breaks:       false,        // Convert '\n' in paragraphs into <br>
   langPrefix:   'language-',  // CSS language prefix for fenced blocks
   linkify:      false,        // Autoconvert URL-like text to links
+  linkTarget:   '',           // Set target to open link in
 
   // Enable some language-neutral replacement + quotes beautification
   typographer:  false,
