@@ -132,4 +132,11 @@ describe('Ruler', function () {
     });
   });
 
+  it('should always return an array, even when no rules are defined for the rule name', function () {
+    var rules, ruler = new Ruler();
+
+    rules = ruler.getRules('list');
+    assert.strictEqual(rules.constructor, Array);
+  });
+
 });
