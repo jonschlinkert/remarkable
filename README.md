@@ -293,7 +293,7 @@ during this project's development.
 ## Development / Modification
 
 [Parser](doc/parser.md) consists of several responsibility chains filled with
-rules. You can reconfigure any of them as you wish. [Render](doc/renderer.md) also
+rules. You can reconfigure any of them as you wish. [Renderer](doc/renderer.md) also
 can be modified and extended. See source code to understand details. Pay
 attention to these properties:
 
