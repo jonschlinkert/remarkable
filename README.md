@@ -49,7 +49,7 @@ If installed globally with `npm`:
 
 ```sh
 cat myfile.md | remarkable 
-remarkable --file myfile.md
+remarkable myfile.md
 
 # get options
 remarkable -h
