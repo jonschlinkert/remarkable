@@ -88,14 +88,16 @@ readFile(options.file, 'utf8', function (err, input) {
     html: options.no_html ? false : true,
     breaks: options.breaks ? true : false,
     linkify: options.no_linkify ? false : true,
-    typographer: options.no_typographer ? false : true,
+    typographer: options.no_typographer ? false : true
   };
 
-  if ( options.highlight ) {
+  if (options.highlight) {
+  	var hljs;
+
     try {
-      var hljs = require('highlight.js');
+      hljs = require('highlight.js');
     } catch (e) {
-      console.error("highlight.js could not be loaded. Please make sure it is installed before using --highlight");
+      console.error('highlight.js could not be loaded. Please make sure it is installed before using --highlight');
       process.exit(1);
     }
 
@@ -103,15 +105,15 @@ readFile(options.file, 'utf8', function (err, input) {
       if (lang && hljs.getLanguage(lang)) {
         try {
           return hljs.highlight(lang, str).value;
-        } catch (err) {}
+        } catch (e) {}
       }
 
       try {
         return hljs.highlightAuto(str).value;
-      } catch (err) {}
+      } catch (e) {}
 
       return ''; // use external default escaping
-    }
+    };
   }
 
   md = new Remarkable('full', mdopts);
