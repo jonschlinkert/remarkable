@@ -92,7 +92,7 @@ readFile(options.file, 'utf8', function (err, input) {
   };
 
   if (options.highlight) {
-  	var hljs;
+    var hljs;
 
     try {
       hljs = require('highlight.js');
