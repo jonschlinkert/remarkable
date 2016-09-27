@@ -1172,13 +1172,13 @@ end
 src line: 1417
 
 .
-~~~~    ruby startline=3 $%@#$
+~~~~    ruby startline=3 $%@#$  ruby-example
 def foo(x)
   return 3
 end
 ~~~~~~~
 .
-<pre><code class="language-ruby">def foo(x)
+<pre><code class="language-ruby startline=3 $%@#$ ruby-example">def foo(x)
   return 3
 end
 </code></pre>
