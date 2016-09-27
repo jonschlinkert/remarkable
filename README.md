@@ -14,9 +14,6 @@ __[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
 - [High speed](#benchmark)!
 - [Community plugins](https://www.npmjs.org/browse/keyword/remarkable) on npm.
 
-## Documentation
-
-See the [docs](docs/) directory for documentation!
 
 ## Install
 
@@ -58,6 +55,16 @@ remarkable --file myfile.md
 remarkable -h
 ```
 
+## Documentation
+
+See the [docs](docs/) directory for documentation on the following topics:
+
+- [parser](docs/parser.md)
+- [parsing_block](docs/parsing_block.md)
+- [parsing_core](docs/parsing_core.md)
+- [parsing_inline](docs/parsing_inline.md)
+- [plugins](docs/plugins.md)
+- [renderer](docs/renderer.md)
 
 ### Options
 
