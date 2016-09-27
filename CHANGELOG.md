@@ -1,3 +1,13 @@
+1.7.0 / 2016-09-27
+------------------
+
+- Special thanks to [lemoinem](https://github.com/lemoinem) for adding much needed, and well-written [documentation](docs/)!
+- Footnotes are now enabled by default
+- Adds support for "passthrough classes", thanks to [matthewmueller](https://github.com/matthewmueller)
+- Outlaws data: URLs by default, thanks to [spicyj](https://github.com/spicyj)
+- Improves whitespace trimming performance, thanks to [dpkirchner](https://github.com/dpkirchner)
+- Image alts are now properly unescaped, thanks to [adam187](https://github.com/adam187)
+
 1.6.2 / 2016-02-04
 ------------------
 
