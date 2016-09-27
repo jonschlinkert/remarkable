@@ -14,6 +14,9 @@ __[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
 - [High speed](#benchmark)!
 - [Community plugins](https://www.npmjs.org/browse/keyword/remarkable) on npm.
 
+## Documentation
+
+See the [docs](docs/) directory for documentation!
 
 ## Install
 
@@ -48,7 +51,7 @@ console.log(md.render('# Remarkable rulezz!'));
 If installed globally with `npm`:
 
 ```sh
-cat myfile.md | remarkable 
+cat myfile.md | remarkable
 remarkable --file myfile.md
 
 # get options
@@ -174,6 +177,7 @@ var md = new Remarkable({
 
 Enabled by default:
 
+- [Footnotes](http://johnmacfarlane.net/pandoc/README.html#footnotes)
 - [Tables](https://help.github.com/articles/github-flavored-markdown/#tables) (GFM)
 - [\<del>](https://help.github.com/articles/github-flavored-markdown/#strikethrough)
   (GFM strikethrough) - `~~deleted text~~`
@@ -183,13 +187,10 @@ Disabled by default:
 - [\<sup>](http://johnmacfarlane.net/pandoc/README.html#superscripts-and-subscripts) - `19^th^`
 - [\<sub>](http://johnmacfarlane.net/pandoc/README.html#superscripts-and-subscripts) - `H~2~0`
 - [abbreviations](https://michelf.ca/projects/php-markdown/extra/#abbr)
-- [footnotes](http://johnmacfarlane.net/pandoc/README.html#footnotes)
 - __\<ins>__ - `++inserted text++` (experimental)
 - __\<mark>__ - `==marked text==` (experimental)
 
-__*__ Experimental extensions can be changed later for something like
-[Critic Markup](http://criticmarkup.com/), but you will still be able to use
-old-style rules via external plugins if you prefer.
+**HEADS UP!**: Experimental extensions can be changed later for something like [Critic Markup](http://criticmarkup.com/), but you will still be able to use old-style rules via external plugins if you prefer.
 
 
 ### Manage rules
@@ -197,7 +198,7 @@ old-style rules via external plugins if you prefer.
 ```js
 var md = new Remarkable();
 md.inline.ruler.enable([ 'ins', 'mark' ]);
-md.block.ruler.disable([ 'table' ]);
+md.block.ruler.disable([ 'table', 'footnote' ]);
 
 // Enable everything
 md = new Remarkable('full', {
