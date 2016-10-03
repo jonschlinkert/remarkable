@@ -1,4 +1,4 @@
-/*! remarkable 1.6.0 https://github.com/jonschlinkert/remarkable @license MIT */(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Remarkable = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*! remarkable 1.7.1 https://github.com/jonschlinkert/remarkable @license MIT */(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Remarkable = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // List of valid entities
 //
 // Generate with ./support/entities.js script
@@ -2702,6 +2702,7 @@ module.exports = {
         'blockquote',
         'code',
         'fences',
+        'footnote',
         'heading',
         'hr',
         'htmlblock',
@@ -3550,7 +3551,7 @@ ParserInline.prototype.parse = function (str, options, env, outTokens) {
  */
 
 function validateLink(url) {
-  var BAD_PROTOCOLS = [ 'vbscript', 'javascript', 'file' ];
+  var BAD_PROTOCOLS = [ 'vbscript', 'javascript', 'file', 'data' ];
   var str = url.trim().toLowerCase();
   // Care about digital entities "javascript&#x3A;alert(1)"
   str = utils.replaceEntities(str);
@@ -3909,7 +3910,7 @@ Ruler.prototype.getRules = function (chainName) {
   if (this.__cache__ === null) {
     this.__compile__();
   }
-  return this.__cache__[chainName];
+  return this.__cache__[chainName] || [];
 };
 
 /**
@@ -3940,11 +3941,11 @@ var rules = {};
  * Blockquotes
  */
 
-rules.blockquote_open = function (/* tokens, idx, options, env */) {
+rules.blockquote_open = function(/* tokens, idx, options, env */) {
   return '<blockquote>\n';
 };
 
-rules.blockquote_close = function (tokens, idx /*, options, env */) {
+rules.blockquote_close = function(tokens, idx /*, options, env */) {
   return '</blockquote>' + getBreak(tokens, idx);
 };
 
@@ -3952,7 +3953,7 @@ rules.blockquote_close = function (tokens, idx /*, options, env */) {
  * Code
  */
 
-rules.code = function (tokens, idx /*, options, env */) {
+rules.code = function(tokens, idx /*, options, env */) {
   if (tokens[idx].block) {
     return '<pre><code>' + escapeHtml(tokens[idx].content) + '</code></pre>' + getBreak(tokens, idx);
   }
@@ -3963,11 +3964,11 @@ rules.code = function (tokens, idx /*, options, env */) {
  * Fenced code blocks
  */
 
-rules.fence = function (tokens, idx, options, env, instance) {
+rules.fence = function(tokens, idx, options, env, instance) {
   var token = tokens[idx];
   var langClass = '';
   var langPrefix = options.langPrefix;
-  var langName = '', fenceName;
+  var langName = '', fences, fenceName;
   var highlighted;
 
   if (token.params) {
@@ -3979,10 +3980,11 @@ rules.fence = function (tokens, idx, options, env, instance) {
     // for diagrams, latex, and any other fenced block with custom look
     //
 
-    fenceName = token.params.split(/\s+/g)[0];
+    fences = token.params.split(/\s+/g);
+    fenceName = fences.join(' ');
 
-    if (has(instance.rules.fence_custom, fenceName)) {
-      return instance.rules.fence_custom[fenceName](tokens, idx, options, env, instance);
+    if (has(instance.rules.fence_custom, fences[0])) {
+      return instance.rules.fence_custom[fences[0]](tokens, idx, options, env, instance);
     }
 
     langName = escapeHtml(replaceEntities(unescapeMd(fenceName)));
@@ -3990,7 +3992,8 @@ rules.fence = function (tokens, idx, options, env, instance) {
   }
 
   if (options.highlight) {
-    highlighted = options.highlight(token.content, langName) || escapeHtml(token.content);
+    highlighted = options.highlight.apply(options.highlight, [ token.content ].concat(fences))
+      || escapeHtml(token.content);
   } else {
     highlighted = escapeHtml(token.content);
   }
@@ -4007,10 +4010,10 @@ rules.fence_custom = {};
  * Headings
  */
 
-rules.heading_open = function (tokens, idx /*, options, env */) {
+rules.heading_open = function(tokens, idx /*, options, env */) {
   return '<h' + tokens[idx].hLevel + '>';
 };
-rules.heading_close = function (tokens, idx /*, options, env */) {
+rules.heading_close = function(tokens, idx /*, options, env */) {
   return '</h' + tokens[idx].hLevel + '>\n';
 };
 
@@ -4018,7 +4021,7 @@ rules.heading_close = function (tokens, idx /*, options, env */) {
  * Horizontal rules
  */
 
-rules.hr = function (tokens, idx, options /*, env */) {
+rules.hr = function(tokens, idx, options /*, env */) {
   return (options.xhtmlOut ? '<hr />' : '<hr>') + getBreak(tokens, idx);
 };
 
@@ -4026,10 +4029,10 @@ rules.hr = function (tokens, idx, options /*, env */) {
  * Bullets
  */
 
-rules.bullet_list_open = function (/* tokens, idx, options, env */) {
+rules.bullet_list_open = function(/* tokens, idx, options, env */) {
   return '<ul>\n';
 };
-rules.bullet_list_close = function (tokens, idx /*, options, env */) {
+rules.bullet_list_close = function(tokens, idx /*, options, env */) {
   return '</ul>' + getBreak(tokens, idx);
 };
 
@@ -4037,10 +4040,10 @@ rules.bullet_list_close = function (tokens, idx /*, options, env */) {
  * List items
  */
 
-rules.list_item_open = function (/* tokens, idx, options, env */) {
+rules.list_item_open = function(/* tokens, idx, options, env */) {
   return '<li>';
 };
-rules.list_item_close = function (/* tokens, idx, options, env */) {
+rules.list_item_close = function(/* tokens, idx, options, env */) {
   return '</li>\n';
 };
 
@@ -4048,12 +4051,12 @@ rules.list_item_close = function (/* tokens, idx, options, env */) {
  * Ordered list items
  */
 
-rules.ordered_list_open = function (tokens, idx /*, options, env */) {
+rules.ordered_list_open = function(tokens, idx /*, options, env */) {
   var token = tokens[idx];
   var order = token.order > 1 ? ' start="' + token.order + '"' : '';
   return '<ol' + order + '>\n';
 };
-rules.ordered_list_close = function (tokens, idx /*, options, env */) {
+rules.ordered_list_close = function(tokens, idx /*, options, env */) {
   return '</ol>' + getBreak(tokens, idx);
 };
 
@@ -4061,10 +4064,10 @@ rules.ordered_list_close = function (tokens, idx /*, options, env */) {
  * Paragraphs
  */
 
-rules.paragraph_open = function (tokens, idx /*, options, env */) {
+rules.paragraph_open = function(tokens, idx /*, options, env */) {
   return tokens[idx].tight ? '' : '<p>';
 };
-rules.paragraph_close = function (tokens, idx /*, options, env */) {
+rules.paragraph_close = function(tokens, idx /*, options, env */) {
   var addBreak = !(tokens[idx].tight && idx && tokens[idx - 1].type === 'inline' && !tokens[idx - 1].content);
   return (tokens[idx].tight ? '' : '</p>') + (addBreak ? getBreak(tokens, idx) : '');
 };
@@ -4073,12 +4076,12 @@ rules.paragraph_close = function (tokens, idx /*, options, env */) {
  * Links
  */
 
-rules.link_open = function (tokens, idx, options /* env */) {
+rules.link_open = function(tokens, idx, options /* env */) {
   var title = tokens[idx].title ? (' title="' + escapeHtml(replaceEntities(tokens[idx].title)) + '"') : '';
   var target = options.linkTarget ? (' target="' + options.linkTarget + '"') : '';
   return '<a href="' + escapeHtml(tokens[idx].href) + '"' + title + target + '>';
 };
-rules.link_close = function (/* tokens, idx, options, env */) {
+rules.link_close = function(/* tokens, idx, options, env */) {
   return '</a>';
 };
 
@@ -4086,10 +4089,10 @@ rules.link_close = function (/* tokens, idx, options, env */) {
  * Images
  */
 
-rules.image = function (tokens, idx, options /*, env */) {
+rules.image = function(tokens, idx, options /*, env */) {
   var src = ' src="' + escapeHtml(tokens[idx].src) + '"';
   var title = tokens[idx].title ? (' title="' + escapeHtml(replaceEntities(tokens[idx].title)) + '"') : '';
-  var alt = ' alt="' + (tokens[idx].alt ? escapeHtml(replaceEntities(tokens[idx].alt)) : '') + '"';
+  var alt = ' alt="' + (tokens[idx].alt ? escapeHtml(replaceEntities(unescapeMd(tokens[idx].alt))) : '') + '"';
   var suffix = options.xhtmlOut ? ' /' : '';
   return '<img' + src + alt + title + suffix + '>';
 };
@@ -4098,46 +4101,46 @@ rules.image = function (tokens, idx, options /*, env */) {
  * Tables
  */
 
-rules.table_open = function (/* tokens, idx, options, env */) {
+rules.table_open = function(/* tokens, idx, options, env */) {
   return '<table>\n';
 };
-rules.table_close = function (/* tokens, idx, options, env */) {
+rules.table_close = function(/* tokens, idx, options, env */) {
   return '</table>\n';
 };
-rules.thead_open = function (/* tokens, idx, options, env */) {
+rules.thead_open = function(/* tokens, idx, options, env */) {
   return '<thead>\n';
 };
-rules.thead_close = function (/* tokens, idx, options, env */) {
+rules.thead_close = function(/* tokens, idx, options, env */) {
   return '</thead>\n';
 };
-rules.tbody_open = function (/* tokens, idx, options, env */) {
+rules.tbody_open = function(/* tokens, idx, options, env */) {
   return '<tbody>\n';
 };
-rules.tbody_close = function (/* tokens, idx, options, env */) {
+rules.tbody_close = function(/* tokens, idx, options, env */) {
   return '</tbody>\n';
 };
-rules.tr_open = function (/* tokens, idx, options, env */) {
+rules.tr_open = function(/* tokens, idx, options, env */) {
   return '<tr>';
 };
-rules.tr_close = function (/* tokens, idx, options, env */) {
+rules.tr_close = function(/* tokens, idx, options, env */) {
   return '</tr>\n';
 };
-rules.th_open = function (tokens, idx /*, options, env */) {
+rules.th_open = function(tokens, idx /*, options, env */) {
   var token = tokens[idx];
   return '<th'
     + (token.align ? ' style="text-align:' + token.align + '"' : '')
     + '>';
 };
-rules.th_close = function (/* tokens, idx, options, env */) {
+rules.th_close = function(/* tokens, idx, options, env */) {
   return '</th>';
 };
-rules.td_open = function (tokens, idx /*, options, env */) {
+rules.td_open = function(tokens, idx /*, options, env */) {
   var token = tokens[idx];
   return '<td'
     + (token.align ? ' style="text-align:' + token.align + '"' : '')
     + '>';
 };
-rules.td_close = function (/* tokens, idx, options, env */) {
+rules.td_close = function(/* tokens, idx, options, env */) {
   return '</td>';
 };
 
@@ -4145,10 +4148,10 @@ rules.td_close = function (/* tokens, idx, options, env */) {
  * Bold
  */
 
-rules.strong_open = function (/* tokens, idx, options, env */) {
+rules.strong_open = function(/* tokens, idx, options, env */) {
   return '<strong>';
 };
-rules.strong_close = function (/* tokens, idx, options, env */) {
+rules.strong_close = function(/* tokens, idx, options, env */) {
   return '</strong>';
 };
 
@@ -4156,10 +4159,10 @@ rules.strong_close = function (/* tokens, idx, options, env */) {
  * Italicize
  */
 
-rules.em_open = function (/* tokens, idx, options, env */) {
+rules.em_open = function(/* tokens, idx, options, env */) {
   return '<em>';
 };
-rules.em_close = function (/* tokens, idx, options, env */) {
+rules.em_close = function(/* tokens, idx, options, env */) {
   return '</em>';
 };
 
@@ -4167,10 +4170,10 @@ rules.em_close = function (/* tokens, idx, options, env */) {
  * Strikethrough
  */
 
-rules.del_open = function (/* tokens, idx, options, env */) {
+rules.del_open = function(/* tokens, idx, options, env */) {
   return '<del>';
 };
-rules.del_close = function (/* tokens, idx, options, env */) {
+rules.del_close = function(/* tokens, idx, options, env */) {
   return '</del>';
 };
 
@@ -4178,10 +4181,10 @@ rules.del_close = function (/* tokens, idx, options, env */) {
  * Insert
  */
 
-rules.ins_open = function (/* tokens, idx, options, env */) {
+rules.ins_open = function(/* tokens, idx, options, env */) {
   return '<ins>';
 };
-rules.ins_close = function (/* tokens, idx, options, env */) {
+rules.ins_close = function(/* tokens, idx, options, env */) {
   return '</ins>';
 };
 
@@ -4189,10 +4192,10 @@ rules.ins_close = function (/* tokens, idx, options, env */) {
  * Highlight
  */
 
-rules.mark_open = function (/* tokens, idx, options, env */) {
+rules.mark_open = function(/* tokens, idx, options, env */) {
   return '<mark>';
 };
-rules.mark_close = function (/* tokens, idx, options, env */) {
+rules.mark_close = function(/* tokens, idx, options, env */) {
   return '</mark>';
 };
 
@@ -4200,10 +4203,10 @@ rules.mark_close = function (/* tokens, idx, options, env */) {
  * Super- and sub-script
  */
 
-rules.sub = function (tokens, idx /*, options, env */) {
+rules.sub = function(tokens, idx /*, options, env */) {
   return '<sub>' + escapeHtml(tokens[idx].content) + '</sub>';
 };
-rules.sup = function (tokens, idx /*, options, env */) {
+rules.sup = function(tokens, idx /*, options, env */) {
   return '<sup>' + escapeHtml(tokens[idx].content) + '</sup>';
 };
 
@@ -4211,10 +4214,10 @@ rules.sup = function (tokens, idx /*, options, env */) {
  * Breaks
  */
 
-rules.hardbreak = function (tokens, idx, options /*, env */) {
+rules.hardbreak = function(tokens, idx, options /*, env */) {
   return options.xhtmlOut ? '<br />\n' : '<br>\n';
 };
-rules.softbreak = function (tokens, idx, options /*, env */) {
+rules.softbreak = function(tokens, idx, options /*, env */) {
   return options.breaks ? (options.xhtmlOut ? '<br />\n' : '<br>\n') : '\n';
 };
 
@@ -4222,7 +4225,7 @@ rules.softbreak = function (tokens, idx, options /*, env */) {
  * Text
  */
 
-rules.text = function (tokens, idx /*, options, env */) {
+rules.text = function(tokens, idx /*, options, env */) {
   return escapeHtml(tokens[idx].content);
 };
 
@@ -4230,10 +4233,10 @@ rules.text = function (tokens, idx /*, options, env */) {
  * Content
  */
 
-rules.htmlblock = function (tokens, idx /*, options, env */) {
+rules.htmlblock = function(tokens, idx /*, options, env */) {
   return tokens[idx].content;
 };
-rules.htmltag = function (tokens, idx /*, options, env */) {
+rules.htmltag = function(tokens, idx /*, options, env */) {
   return tokens[idx].content;
 };
 
@@ -4241,10 +4244,10 @@ rules.htmltag = function (tokens, idx /*, options, env */) {
  * Abbreviations, initialism
  */
 
-rules.abbr_open = function (tokens, idx /*, options, env */) {
+rules.abbr_open = function(tokens, idx /*, options, env */) {
   return '<abbr title="' + escapeHtml(replaceEntities(tokens[idx].title)) + '">';
 };
-rules.abbr_close = function (/* tokens, idx, options, env */) {
+rules.abbr_close = function(/* tokens, idx, options, env */) {
   return '</abbr>';
 };
 
@@ -4252,7 +4255,7 @@ rules.abbr_close = function (/* tokens, idx, options, env */) {
  * Footnotes
  */
 
-rules.footnote_ref = function (tokens, idx) {
+rules.footnote_ref = function(tokens, idx) {
   var n = Number(tokens[idx].id + 1).toString();
   var id = 'fnref' + n;
   if (tokens[idx].subId > 0) {
@@ -4260,23 +4263,23 @@ rules.footnote_ref = function (tokens, idx) {
   }
   return '<sup class="footnote-ref"><a href="#fn' + n + '" id="' + id + '">[' + n + ']</a></sup>';
 };
-rules.footnote_block_open = function (tokens, idx, options) {
+rules.footnote_block_open = function(tokens, idx, options) {
   var hr = options.xhtmlOut
     ? '<hr class="footnotes-sep" />\n'
     : '<hr class="footnotes-sep">\n';
-  return  hr + '<section class="footnotes">\n<ol class="footnotes-list">\n';
+  return hr + '<section class="footnotes">\n<ol class="footnotes-list">\n';
 };
-rules.footnote_block_close = function () {
+rules.footnote_block_close = function() {
   return '</ol>\n</section>\n';
 };
-rules.footnote_open = function (tokens, idx) {
+rules.footnote_open = function(tokens, idx) {
   var id = Number(tokens[idx].id + 1).toString();
   return '<li id="fn' + id + '"  class="footnote-item">';
 };
-rules.footnote_close = function () {
+rules.footnote_close = function() {
   return '</li>\n';
 };
-rules.footnote_anchor = function (tokens, idx) {
+rules.footnote_anchor = function(tokens, idx) {
   var n = Number(tokens[idx].id + 1).toString();
   var id = 'fnref' + n;
   if (tokens[idx].subId > 0) {
@@ -5633,9 +5636,8 @@ function getLine(state, line) {
   return state.src.substr(pos, max - pos);
 }
 
-
 module.exports = function table(state, startLine, endLine, silent) {
-  var ch, lineText, pos, i, nextLine, rows,
+  var ch, lineText, pos, i, nextLine, rows, cell,
       aligns, t, tableLines, tbodyLines;
 
   // should have at least three lines
@@ -5738,9 +5740,14 @@ module.exports = function table(state, startLine, endLine, silent) {
     state.tokens.push({ type: 'tr_open', level: state.level++ });
     for (i = 0; i < rows.length; i++) {
       state.tokens.push({ type: 'td_open', align: aligns[i], level: state.level++ });
+      // 0x7c === '|'
+      cell = rows[i].substring(
+          rows[i].charCodeAt(0) === 0x7c ? 1 : 0,
+          rows[i].charCodeAt(rows[i].length - 1) === 0x7c ? rows[i].length - 1 : rows[i].length
+      ).trim();
       state.tokens.push({
         type: 'inline',
-        content: rows[i].replace(/^\|? *| *\|?$/g, ''),
+        content: cell,
         level: state.level,
         children: []
       });
@@ -7493,7 +7500,13 @@ module.exports = function newline(state, silent) {
   if (!silent) {
     if (pmax >= 0 && state.pending.charCodeAt(pmax) === 0x20) {
       if (pmax >= 1 && state.pending.charCodeAt(pmax - 1) === 0x20) {
-        state.pending = state.pending.replace(/ +$/, '');
+        // Strip out all trailing spaces on this line.
+        for (var i = pmax - 2; i >= 0; i--) {
+          if (state.pending.charCodeAt(i) !== 0x20) {
+            state.pending = state.pending.substring(0, i + 1);
+            break;
+          }
+        }
         state.push({
           type: 'hardbreak',
           level: state.level
@@ -7528,7 +7541,6 @@ module.exports = function newline(state, silent) {
 
 'use strict';
 
-
 function StateInline(src, parserInline, options, env, outTokens) {
   this.src = src;
   this.env = env;
@@ -7559,7 +7571,6 @@ function StateInline(src, parserInline, options, env, outTokens) {
                                  // (backtrack optimization)
 }
 
-
 // Flush pending text
 //
 StateInline.prototype.pushPending = function () {
@@ -7570,7 +7581,6 @@ StateInline.prototype.pushPending = function () {
   });
   this.pending = '';
 };
-
 
 // Push new token to "stream".
 // If pending text exists - flush it as text token
@@ -7584,7 +7594,6 @@ StateInline.prototype.push = function (token) {
   this.pendingLevel = this.level;
 };
 
-
 // Store value to cache.
 // !!! Implementation has parser-specific optimizations
 // !!! keys MUST be integer, >= 0; values MUST be integer, > 0
@@ -7597,13 +7606,11 @@ StateInline.prototype.cacheSet = function (key, val) {
   this.cache[key] = val;
 };
 
-
 // Get cache value
 //
 StateInline.prototype.cacheGet = function (key) {
   return key < this.cache.length ? this.cache[key] : 0;
 };
-
 
 module.exports = StateInline;
 
@@ -7732,7 +7739,6 @@ module.exports = function sup(state, silent) {
 // and increment current pos
 
 'use strict';
-
 
 // Rule to skip pure text
 // '{}$%@~+=:' reserved for extentions
@@ -10109,7 +10115,6 @@ return Autolinker;
 
 },{}],"/":[function(require,module,exports){
 'use strict';
-
 
 module.exports = require('./lib/');
 
