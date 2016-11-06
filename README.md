@@ -39,7 +39,7 @@ bower install remarkable --save
 
 ```js
 const Remarkable = require('remarkable');
-constar md = new Remarkable();
+const md = new Remarkable();
 
 console.log(md.render('# Remarkable rulezz!'));
 // => <h1>Remarkable rulezz!</h1>
@@ -153,7 +153,7 @@ const hljs       = require('highlight.js') // https://highlightjs.org/
 
 // Actual default values
 const md = new Remarkable({
-  highlight: function (str, lang) {
+  highlight(str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
         return hljs.highlight(lang, str).value;
