@@ -281,7 +281,7 @@ md.use(plugin1)
   .use(plugin3);
 ```
 
-Please refer to the [plugin documentation](doc/plugins.md) to create your own
+Please refer to the [plugin documentation](docs/plugins.md) to create your own
 plugins.
 
 ## References / Thanks
@@ -300,8 +300,8 @@ during this project's development.
 
 ## Development / Modification
 
-[Parser](doc/parser.md) consists of several responsibility chains filled with
-rules. You can reconfigure any of them as you wish. [Renderer](doc/renderer.md) also
+[Parser](docs/parser.md) consists of several responsibility chains filled with
+rules. You can reconfigure any of them as you wish. [Renderer](docs/renderer.md) also
 can be modified and extended. See source code to understand details. Pay
 attention to these properties:
 
