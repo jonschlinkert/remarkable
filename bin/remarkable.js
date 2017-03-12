@@ -18,9 +18,34 @@ var cli = new argparse.ArgumentParser({
 });
 
 cli.addArgument([ 'file' ], {
-  help: 'File to read',
+  help: 'File to read (Defaults to standard input)',
   nargs: '?',
   defaultValue: '-'
+});
+
+cli.addArgument([ '--no-html' ], {
+  help: 'Escape HTML tags in source',
+  nargs: 0
+});
+
+cli.addArgument([ '--breaks' ], {
+  help: 'Convert \'\\n\' in paragraphs into <br>',
+  nargs: 0
+});
+
+cli.addArgument([ '--no-linkify' ], {
+  help: 'Disable autoconverting of URL-like text',
+  nargs: 0
+});
+
+cli.addArgument([ '--no-typographer' ], {
+  help: 'Disable typographic marks replacement and smart quotes',
+  nargs: 0
+});
+
+cli.addArgument([ '--highlight' ], {
+  help: 'Enable syntax highlighting for fenced blocks (Requires highlight.js be installed)',
+  nargs: 0
 });
 
 var options = cli.parseArgs();
@@ -59,12 +84,39 @@ readFile(options.file, 'utf8', function (err, input) {
     process.exit(1);
   }
 
-  md = new Remarkable('full', {
-    html: true,
-    xhtmlOut: true,
-    typographer: true,
-    linkify: true
-  });
+  var mdopts = {
+    html: options.no_html ? false : true,
+    breaks: options.breaks ? true : false,
+    linkify: options.no_linkify ? false : true,
+    typographer: options.no_typographer ? false : true
+  };
+
+  if (options.highlight) {
+    var hljs;
+
+    try {
+      hljs = require('highlight.js');
+    } catch (e) {
+      console.error('highlight.js could not be loaded. Please make sure it is installed before using --highlight');
+      process.exit(1);
+    }
+
+    mdopts.highlight = function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(lang, str).value;
+        } catch (e) {}
+      }
+
+      try {
+        return hljs.highlightAuto(str).value;
+      } catch (e) {}
+
+      return ''; // use external default escaping
+    };
+  }
+
+  md = new Remarkable('full', mdopts);
 
   try {
     output = md.render(input);
