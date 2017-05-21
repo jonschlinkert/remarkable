@@ -28,5 +28,5 @@ To better understand how the core rules work, please read the code in
 [`parser_core.js`](../lib/parser_core.js) and the predefined rules in
 [`rules_core/`](../lib/rules_core/).
 
-[inline]: parsing_inline.js
-[block]: parsing_block.js
+[inline]: parsing_inline.md
+[block]: parsing_block.md
