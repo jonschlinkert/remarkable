@@ -6,7 +6,7 @@
 
 > Markdown parser done right. Fast and easy to extend.
 
-__[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
+__[Live demo](https://jonschlinkert.github.io/remarkable/demo/)__
 
 - Supports the [CommonMark](http://commonmark.org/) spec +
   [syntax extensions](#syntax-extensions) + sugar (URL autolinking, typographer).
