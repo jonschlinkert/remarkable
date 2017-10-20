@@ -46,6 +46,13 @@ www.example.org版权所有
 .
 
 
+unicode
+.
+www.example.org#版权所有
+.
+<p><a href="http://www.example.org#版权所有">www.example.org#版权所有</a></p>
+.
+
 emails
 .
 test@example.com

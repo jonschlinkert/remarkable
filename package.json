@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "argparse": "~0.1.15",
-    "autolinker": "~0.15.0"
+    "autolinker": "~0.28.0"
   },
   "devDependencies": {
     "ansi": "^0.3.0",
