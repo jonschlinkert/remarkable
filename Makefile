@@ -18,11 +18,15 @@ demo: lint
 	stylus -u autoprefixer-stylus demo/assets/index.styl
 	rm -rf demo/example.json
 
-lint:
+lint: eslint tslint
+
+eslint:
 	eslint --fix ./bin ./lib ./support ./test
+
+tslint:
 	tslint --fix *.ts lib/*.ts lib/*/*.ts
 
-test: lint
+test: eslint
 	NODE_ENV=test mocha -R spec
 	echo "CommonMark stat:\n"
 	./support/specsplit.js test/fixtures/commonmark/spec.txt
@@ -31,7 +35,7 @@ coverage:
 	rm -rf coverage
 	istanbul cover node_modules/.bin/_mocha
 
-test-ci:
+test-ci: eslint
 	istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 
 gh-pages:
