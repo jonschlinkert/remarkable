@@ -1,4 +1,4 @@
-// Tests for typings.
+// This code does not run, but it is type-checked.
 
 import hljs = require("highlight.js");
 import Remarkable = require(".");
@@ -44,7 +44,7 @@ export class RemarkableTest {
         let md = new Remarkable("full");
 
         // Or with options:
-        const md = new Remarkable("full", {
+        md = new Remarkable("full", {
             html: true,
             linkify: true,
             typographer: true,
@@ -300,5 +300,50 @@ export class TokenTest {
             title: "",
             level: level++,
         });
+    }
+}
+
+/**
+ * Helper function usage.
+ */
+export class UtilsTest {
+    isString() {
+        Remarkable.utils.isString("foo");
+        Remarkable.utils.isString(1);
+        Remarkable.utils.isString({});
+        Remarkable.utils.isString();
+    }
+
+    has() {
+        Remarkable.utils.has({ foo: "bar" }, "foo");
+        Remarkable.utils.has({}, "foo");
+    }
+
+    assign() {
+        Remarkable.utils.assign({}, { foo: "bar" }, { baz: "qux" });
+    }
+
+    unescapeMd() {
+        Remarkable.utils.unescapeMd("\\<foo /\\>");
+    }
+
+    isValidEntityCode() {
+        Remarkable.utils.isValidEntityCode(0xD800);
+        Remarkable.utils.isValidEntityCode(0xD7FF);
+        Remarkable.utils.isValidEntityCode(1000);
+    }
+
+    fromCodePoint() {
+        Remarkable.utils.fromCodePoint(0xffff + 1);
+        Remarkable.utils.fromCodePoint(0xffff);
+    }
+
+    replaceEntities() {
+        Remarkable.utils.replaceEntities("");
+        Remarkable.utils.replaceEntities("&nbsp;");
+    }
+
+    escapeHtml() {
+        Remarkable.utils.replaceEntities('<script>alert("&copy;")</script>');
     }
 }

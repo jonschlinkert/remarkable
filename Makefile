@@ -22,7 +22,7 @@ lint: tslint
 	eslint --reset ./bin ./lib ./support ./test
 
 tslint:
-	tslint --fix *.ts lib/*.ts
+	tslint --fix *.ts lib/*.ts lib/*/*.ts
 
 test: lint
 	NODE_ENV=test mocha -R spec

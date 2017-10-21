@@ -1,9 +1,15 @@
+import * as Utils from "./common/utils";
 import Renderer = require("./renderer");
 import Ruler = require("./ruler");
 
 export = Remarkable;
 
 declare class Remarkable {
+    /**
+     * Useful helper functions for custom rendering.
+     */
+    static utils: typeof Utils;
+
     inline: { ruler: Ruler };
 
     block: { ruler: Ruler };
@@ -26,7 +32,7 @@ declare class Remarkable {
     /**
      * `"# Remarkable rulezz!"` => `"<h1>Remarkable rulezz!</h1>"`
      */
-    render(markdown: string): string;
+    render(markdown: string, env?: Remarkable.Env): string;
 
     /**
      * Define options.
@@ -41,6 +47,28 @@ declare class Remarkable {
      * Use a plugin.
      */
     use(plugin: Remarkable.Plugin, options?: any): Remarkable;
+
+    /**
+     * Batch loader for components rules states, and options.
+     */
+    configure(presets: Remarkable.Presets): void;
+
+    /**
+     * Parse the input `string` and return a tokens array.
+     * Modifies `env` with definitions data.
+     */
+    parse(str: string, env: Remarkable.Env): Remarkable.Token[];
+
+    /**
+     * Parse the given content `string` as a single string.
+     */
+    parseInline(str: string, env: Remarkable.Env): Remarkable.Token[];
+
+    /**
+     * Render a single content `string`, without wrapping it
+     * to paragraphs.
+     */
+    renderInline(str: string, env?: Remarkable.Env): string;
 }
 
 declare namespace Remarkable {
@@ -95,6 +123,16 @@ declare namespace Remarkable {
     }
 
     type Plugin = (md: Remarkable, options?: any) => void;
+
+    interface Presets {
+        components: {
+            [name: string]: {
+                rules: Rules,
+            },
+        };
+
+        options: Options;
+    }
 
     type Rule = (
         /**
