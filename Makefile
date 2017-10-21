@@ -19,7 +19,7 @@ demo: lint
 	rm -rf demo/example.json
 
 lint: tslint
-	eslint --reset ./bin ./lib ./support ./test
+	eslint --fix ./bin ./lib ./support ./test
 
 tslint:
 	tslint --fix *.ts lib/*.ts lib/*/*.ts
