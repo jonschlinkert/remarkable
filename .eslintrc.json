@@ -1,9 +1,4 @@
 {
-  "ecmaFeatures": {
-    "modules": true,
-    "experimentalObjectRestSpread": true
-  },
-
   "env": {
     "browser": false,
     "es6": true,
@@ -32,8 +27,8 @@
     "eqeqeq": [2, "allow-null"],
     "generator-star-spacing": [2, { "before": true, "after": true }],
     "handle-callback-err": [2, "^(err|error)$" ],
-    "indent": [2, 2, { "SwitchCase": 1 }],
-    "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
+    "indent": 0,
+    "key-spacing": 0,
     "keyword-spacing": [2, { "before": true, "after": true }],
     "new-cap": [2, { "newIsCap": true, "capIsNew": false }],
     "new-parens": 2,
@@ -42,7 +37,7 @@
     "no-class-assign": 2,
     "no-cond-assign": 2,
     "no-const-assign": 2,
-    "no-control-regex": 2,
+    "no-control-regex": 0,
     "no-debugger": 2,
     "no-delete-var": 2,
     "no-dupe-args": 2,
@@ -70,7 +65,7 @@
     "no-mixed-spaces-and-tabs": 2,
     "no-multi-spaces": 0,
     "no-multi-str": 2,
-    "no-multiple-empty-lines": [2, { "max": 1 }],
+    "no-multiple-empty-lines": 0,
     "no-native-reassign": 0,
     "no-negated-in-lhs": 2,
     "no-new": 2,
@@ -95,7 +90,7 @@
     "no-trailing-spaces": 0,
     "no-undef": 2,
     "no-undef-init": 2,
-    "no-unexpected-multiline": 2,
+    "no-unexpected-multiline": 0,
     "no-unneeded-ternary": [2, { "defaultAssignment": false }],
     "no-unreachable": 2,
     "no-unused-vars": [2, { "vars": "all", "args": "none" }],
@@ -109,7 +104,7 @@
     "semi": [2, "always"],
     "semi-spacing": [2, { "before": false, "after": true }],
     "space-before-blocks": [2, "always"],
-    "space-before-function-paren": [2, "never"],
+    "space-before-function-paren": 0,
     "space-in-parens": [2, "never"],
     "space-infix-ops": 2,
     "space-unary-ops": [2, { "words": true, "nonwords": false }],

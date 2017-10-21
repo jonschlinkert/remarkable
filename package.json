@@ -58,6 +58,7 @@
     "test": "make test"
   },
   "dependencies": {
+    "@types/highlight.js": "^9.1.10",
     "argparse": "~0.1.15",
     "autolinker": "~0.15.0"
   },
@@ -65,10 +66,16 @@
     "ansi": "^0.3.0",
     "benchmark": "^1.0.0",
     "commonmark": "0.12.0",
+    "coveralls": "^3.0.0",
+    "dtslint": "^0.1.2",
+    "eslint": "^4.9.0",
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
+    "istanbul": "^0.4.5",
     "marked": "0.3.2",
-    "mocha": "*"
+    "mocha": "*",
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3"
   },
   "keywords": [
     "commonmark",
