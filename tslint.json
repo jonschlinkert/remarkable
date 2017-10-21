@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "tslint:latest",
+        "dtslint/dt.json"
+    ],
+    "rules": {
+        "no-implicit-dependencies": [
+            true,
+            "dev"
+        ]
+    }
+}

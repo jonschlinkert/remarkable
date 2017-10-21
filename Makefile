@@ -18,8 +18,11 @@ demo: lint
 	stylus -u autoprefixer-stylus demo/assets/index.styl
 	rm -rf demo/example.json
 
-lint:
+lint: tslint
 	eslint --reset ./bin ./lib ./support ./test
+
+tslint:
+	tslint --fix *.ts lib/*.ts
 
 test: lint
 	NODE_ENV=test mocha -R spec
