@@ -1,6 +1,6 @@
 # remarkable
 
-[![Build Status](https://travis-ci.org/jonschlinkert/remarkable.svg?branch=master)](https://travis-ci.org/jonschlinkert/remarkable)
+[![Build Status](https://travis-ci.org/jonschlinkert/remarkable.svg?branch=dev)](https://travis-ci.org/jonschlinkert/remarkable)
 [![NPM version](https://img.shields.io/npm/v/remarkable.svg)](https://www.npmjs.org/package/remarkable)
 [![Coverage Status](https://img.shields.io/coveralls/jonschlinkert/remarkable.svg)](https://coveralls.io/r/jonschlinkert/remarkable?branch=dev)
 
