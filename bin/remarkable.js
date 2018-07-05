@@ -17,7 +17,7 @@ var cli = new argparse.ArgumentParser({
   addHelp: true
 });
 
-cli.addArgument([ 'file' ], {
+cli.addArgument([ '--file' ], {
   help: 'File to read',
   nargs: '?',
   defaultValue: '-'
