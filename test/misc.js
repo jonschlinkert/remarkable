@@ -105,6 +105,20 @@ describe('API', function () {
     assert.strictEqual(md.render('```\n&\n```'), '<pre><code>&amp;\n</code></pre>\n');
   });
 
+  it('Linkify prefilter', function () {
+    var md = new Remarkable({
+      linkify: true,
+      linkifyPrefilter: function (str) {
+        // Only linkify if link starts with https://
+        return /^https?:\/\//.test(str);
+      }
+    });
+
+    assert.strictEqual(md.render('https://www.google.com'),
+      '<p><a href="https://www.google.com">https://www.google.com</a></p>\n');
+    assert.strictEqual(md.render('www.google.com'), '<p>www.google.com</p>\n');
+  });
+
   it('force hardbreaks', function () {
     var md = new Remarkable({ breaks: true });
 
