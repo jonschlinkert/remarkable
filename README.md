@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jonschlinkert/remarkable.svg?branch=master)](https://travis-ci.org/jonschlinkert/remarkable)
 [![NPM version](https://img.shields.io/npm/v/remarkable.svg)](https://www.npmjs.org/package/remarkable)
+[![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/remarkable/badge?style=rounded)](https://www.jsdelivr.com/package/npm/remarkable)
 [![Coverage Status](https://img.shields.io/coveralls/jonschlinkert/remarkable.svg)](https://coveralls.io/r/jonschlinkert/remarkable?branch=dev)
 
 > Markdown parser done right. Fast and easy to extend.
@@ -48,13 +49,23 @@ console.log(md.render('# Remarkable rulezz!'));
 If installed globally with `npm`:
 
 ```sh
-cat myfile.md | remarkable 
+cat myfile.md | remarkable
 remarkable --file myfile.md
 
 # get options
 remarkable -h
 ```
 
+## Documentation
+
+See the [docs](docs/) directory for documentation on the following topics:
+
+- [parser](docs/parser.md)
+- [parsing_block](docs/parsing_block.md)
+- [parsing_core](docs/parsing_core.md)
+- [parsing_inline](docs/parsing_inline.md)
+- [plugins](docs/plugins.md)
+- [renderer](docs/renderer.md)
 
 ### Options
 
@@ -175,6 +186,7 @@ const md = new Remarkable({
 
 Enabled by default:
 
+- [Footnotes](http://johnmacfarlane.net/pandoc/README.html#footnotes)
 - [Tables](https://help.github.com/articles/github-flavored-markdown/#tables) (GFM)
 - [\<del>](https://help.github.com/articles/github-flavored-markdown/#strikethrough)
   (GFM strikethrough) - `~~deleted text~~`
@@ -182,15 +194,12 @@ Enabled by default:
 Disabled by default:
 
 - [\<sup>](http://johnmacfarlane.net/pandoc/README.html#superscripts-and-subscripts) - `19^th^`
-- [\<sub>](http://johnmacfarlane.net/pandoc/README.html#superscripts-and-subscripts) - `H~2~0`
+- [\<sub>](http://johnmacfarlane.net/pandoc/README.html#superscripts-and-subscripts) - `H~2~O`
 - [abbreviations](https://michelf.ca/projects/php-markdown/extra/#abbr)
-- [footnotes](http://johnmacfarlane.net/pandoc/README.html#footnotes)
 - __\<ins>__ - `++inserted text++` (experimental)
 - __\<mark>__ - `==marked text==` (experimental)
 
-__*__ Experimental extensions can be changed later for something like
-[Critic Markup](http://criticmarkup.com/), but you will still be able to use
-old-style rules via external plugins if you prefer.
+**HEADS UP!**: Experimental extensions can be changed later for something like [Critic Markup](http://criticmarkup.com/), but you will still be able to use old-style rules via external plugins if you prefer.
 
 
 ### Manage rules
@@ -198,7 +207,7 @@ old-style rules via external plugins if you prefer.
 ```js
 const md = new Remarkable();
 md.inline.ruler.enable([ 'ins', 'mark' ]);
-md.block.ruler.disable([ 'table' ]);
+md.block.ruler.disable([ 'table', 'footnote' ]);
 
 // Enable everything
 md = new Remarkable('full', {
@@ -274,7 +283,7 @@ md.use(plugin1)
   .use(plugin3);
 ```
 
-Please refer to the [plugin documentation](doc/plugins.md) to create your own
+Please refer to the [plugin documentation](docs/plugins.md) to create your own
 plugins.
 
 ## References / Thanks
@@ -293,8 +302,8 @@ during this project's development.
 
 ## Development / Modification
 
-[Parser](doc/parser.md) consists of several responsibility chains filled with
-rules. You can reconfigure any of them as you wish. [Renderer](doc/renderer.md) also
+[Parser](docs/parser.md) consists of several responsibility chains filled with
+rules. You can reconfigure any of them as you wish. [Renderer](docs/renderer.md) also
 can be modified and extended. See source code to understand details. Pay
 attention to these properties:
 

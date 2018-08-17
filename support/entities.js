@@ -1,13 +1,11 @@
 #!/usr/bin/env node
 
+'use strict';
 //
 // Markdown entities generator (from html5 entities)
 //
-'use strict';
 
 /*eslint no-console:0*/
-
-
 var http = require('http');
 
 function codeToUni(code) {
@@ -43,7 +41,7 @@ http.get('http://www.w3.org/TR/html5/entities.json', function (res) {
     var result = [];
 
     Object.keys(out).forEach(function (key) {
-      result.push('  "' + key + '":"' + out[key] + '"');
+      result.push('  "' + key + '": "' + out[key] + '"');
     });
 
     console.log('{\n' + result.join(',\n') + '\n}');

@@ -1,6 +1,5 @@
 # Plugins
 
-
 Plugins are the most easy way to distribute an extension for remarkable.
 
 Plugins are expected to be loaded using `md.use(plugin[, opts])` (where `md` is
