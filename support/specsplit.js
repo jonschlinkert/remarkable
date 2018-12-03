@@ -6,13 +6,11 @@
 
 'use strict';
 
-
 var fs        = require('fs');
 var util      = require('util');
 var argparse  = require('argparse');
 
 var Remarkable = require('..');
-
 
 var cli = new argparse.ArgumentParser({
   prog: 'specsplit',
@@ -52,12 +50,11 @@ function readFile(filename, encoding, callback) {
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////
 
-readFile(options.spec, 'utf8', function (error, input) {
+readFile(options.spec, 'utf8', function(error, input) {
   var good = [], bad = [],
-      markdown = new Remarkable('commonmark');
+    markdown = new Remarkable('commonmark');
 
   if (error) {
     if (error.code === 'ENOENT') {
@@ -97,7 +94,7 @@ readFile(options.spec, 'utf8', function (error, input) {
   } else {
     var data = options.type === 'good' ? good : bad;
 
-    data.forEach(function (sample) {
+    data.forEach(function(sample) {
       console.log(util.format(
         '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n' +
         'src line: %s\n\n.\n%s.\n%s.\n',

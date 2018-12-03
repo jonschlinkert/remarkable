@@ -1,13 +1,12 @@
 /*global describe, it*/
 'use strict';
 
-
 var assert = require('assert');
 var Ruler  = require('../lib/ruler');
 
-describe('Ruler', function () {
+describe('Ruler', function() {
 
-  it('should replace rule (.at)', function () {
+  it('should replace rule (.at)', function() {
     var ruler = new Ruler();
     var res = 0;
 
@@ -21,8 +20,7 @@ describe('Ruler', function () {
     assert.strictEqual(res, 2);
   });
 
-
-  it('should inject before/after rule', function () {
+  it('should inject before/after rule', function() {
     var ruler = new Ruler();
     var res = 0;
 
@@ -41,8 +39,7 @@ describe('Ruler', function () {
     assert.strictEqual(res, 10);
   });
 
-
-  it('should enable/disable rule', function () {
+  it('should enable/disable rule', function() {
     var rules, ruler = new Ruler();
 
     ruler.push('test', function foo() {});
@@ -66,8 +63,7 @@ describe('Ruler', function () {
     assert.strictEqual(rules.length, 2);
   });
 
-
-  it('should enable/disable multiple rule', function () {
+  it('should enable/disable multiple rule', function() {
     var rules, ruler = new Ruler();
 
     ruler.push('test', function foo() {});
@@ -81,8 +77,7 @@ describe('Ruler', function () {
     assert.strictEqual(rules.length, 2);
   });
 
-
-  it('should enable rules by whitelist', function () {
+  it('should enable rules by whitelist', function() {
     var rules, ruler = new Ruler();
 
     ruler.push('test', function foo() {});
@@ -93,8 +88,7 @@ describe('Ruler', function () {
     assert.strictEqual(rules.length, 1);
   });
 
-
-  it('should support multiple chains', function () {
+  it('should support multiple chains', function() {
     var rules, ruler = new Ruler();
 
     ruler.push('test', function foo() {});
@@ -109,30 +103,29 @@ describe('Ruler', function () {
     assert.strictEqual(rules.length, 1);
   });
 
-
-  it('should fail on invalid rule name', function () {
+  it('should fail on invalid rule name', function() {
     var ruler = new Ruler();
 
     ruler.push('test', function foo() {});
 
-    assert.throws(function () {
+    assert.throws(function() {
       ruler.at('invalid name', function bar() {});
     });
-    assert.throws(function () {
+    assert.throws(function() {
       ruler.before('invalid name', function bar() {});
     });
-    assert.throws(function () {
+    assert.throws(function() {
       ruler.after('invalid name', function bar() {});
     });
-    assert.throws(function () {
+    assert.throws(function() {
       ruler.enable('invalid name');
     });
-    assert.throws(function () {
+    assert.throws(function() {
       ruler.disable('invalid name');
     });
   });
 
-  it('should always return an array, even when no rules are defined for the rule name', function () {
+  it('should always return an array, even when no rules are defined for the rule name', function() {
     var rules, ruler = new Ruler();
 
     rules = ruler.getRules('list');

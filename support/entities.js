@@ -22,7 +22,7 @@ function strToUni(str) {
   return result;
 }
 
-http.get('http://www.w3.org/TR/html5/entities.json', function (res) {
+http.get('http://www.w3.org/TR/html5/entities.json', function(res) {
   var body = '';
   res.on('data', function(chunk) {
     body += chunk;
@@ -31,7 +31,7 @@ http.get('http://www.w3.org/TR/html5/entities.json', function (res) {
     var entities = JSON.parse(body);
     var out = {};
 
-    Object.keys(entities).forEach(function (entity) {
+    Object.keys(entities).forEach(function(entity) {
       // Skip legacy - not allosed in markdown
       if (entity[entity.length - 1] !== ';') { return; }
 
@@ -40,7 +40,7 @@ http.get('http://www.w3.org/TR/html5/entities.json', function (res) {
 
     var result = [];
 
-    Object.keys(out).forEach(function (key) {
+    Object.keys(out).forEach(function(key) {
       result.push('  "' + key + '": "' + out[key] + '"');
     });
 

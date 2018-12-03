@@ -1,15 +1,12 @@
 /*global describe*/
 'use strict';
 
-
 var path = require('path');
-
 
 var utils = require('./utils');
 var Remarkable = require('../');
 
-
-describe('remarkable', function () {
+describe('remarkable', function() {
   var md = new Remarkable('full', {
     html: true,
     langPrefix: '',
