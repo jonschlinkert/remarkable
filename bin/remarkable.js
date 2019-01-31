@@ -1,17 +1,13 @@
 #!/usr/bin/env node
 /*eslint no-console:0*/
-
 'use strict';
 
-
 var fs = require('fs');
-var argparse = require('argparse');
-
+var ArgumentParser = require('argparse').ArgumentParser;
 var Remarkable = require('..');
 
 ////////////////////////////////////////////////////////////////////////////////
-
-var cli = new argparse.ArgumentParser({
+var cli = new ArgumentParser({
   prog: 'remarkable',
   version: require('../package.json').version,
   addHelp: true
@@ -24,7 +20,6 @@ cli.addArgument([ 'file' ], {
 });
 
 var options = cli.parseArgs();
-
 
 function readFile(filename, encoding, callback) {
   if (options.file === '-') {
@@ -43,10 +38,8 @@ function readFile(filename, encoding, callback) {
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////
-
-readFile(options.file, 'utf8', function (err, input) {
+readFile(options.file, 'utf8', function(err, input) {
   var output, md;
 
   if (err) {

@@ -58,13 +58,14 @@
     "test": "make test"
   },
   "dependencies": {
-    "argparse": "~0.1.15",
+    "argparse": "1.0.10",
     "autolinker": "~0.28.0"
   },
   "devDependencies": {
     "ansi": "^0.3.0",
     "benchmark": "^1.0.0",
     "commonmark": "0.12.0",
+    "eslint": "5.12.1",
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
     "marked": "0.3.2",
