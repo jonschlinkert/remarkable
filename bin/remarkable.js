@@ -39,7 +39,7 @@ function readFile(filename, encoding, callback) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-readFile(options.file, 'utf8', function (err, input) {
+readFile(options.file, 'utf8', function (err, input){
   var output, md;
 
   if (err) {
