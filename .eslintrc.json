@@ -3,7 +3,7 @@
     "ecmaFeatures": {
       "modules": true,
       "experimentalObjectRestSpread": true
-    },
+    }
   },
 
   "env": {
