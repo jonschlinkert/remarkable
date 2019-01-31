@@ -68,6 +68,7 @@
     "eslint": "5.12.1",
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
+    "istanbul": "0.4.5",
     "marked": "0.3.2",
     "mocha": "*"
   },
