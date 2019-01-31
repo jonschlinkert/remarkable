@@ -11,8 +11,6 @@ REMOTE_REPO ?= $(shell git config --get remote.${REMOTE_NAME}.url)
 CURR_HEAD   := $(firstword $(shell git show-ref --hash HEAD | cut -b -6) master)
 GITHUB_PROJ := https://github.com/DarrenMack-OD/${NPM_PACKAGE}
 
-COVERALLS_REPO_TOKEN := 710a02dce2ba42871861d4e95e160a4ff0ce51f9
-
 demo: lint
 	./support/demodata.js > demo/example.json
 	jade demo/index.jade -P --obj demo/example.json
