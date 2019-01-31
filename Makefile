@@ -19,7 +19,7 @@ demo: lint
 	rm -rf demo/example.json
 
 lint:
-	eslint --reset ./bin ./lib ./support ./test
+	eslint ./bin ./lib ./support ./test
 
 test: lint
 	NODE_ENV=test mocha -R spec
