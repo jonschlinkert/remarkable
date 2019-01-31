@@ -5,4 +5,4 @@ node_js:
  - "4"
  - "6"
 sudo: false
-script: make && make test-ci
+script: make test-ci
