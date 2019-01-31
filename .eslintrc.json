@@ -1,6 +1,6 @@
 {
   "parserOptions": {
-    "ecmaFeatures": {
+    "ecmaVersion": {
       "modules": true,
       "experimentalObjectRestSpread": true
     }
