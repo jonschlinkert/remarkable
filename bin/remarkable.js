@@ -21,7 +21,6 @@ cli.addArgument([ 'file' ], {
 
 var options = cli.parseArgs();
 
-
 function readFile(filename, encoding, callback) {
   if (options.file === '-') {
     var chunks = [];
@@ -39,9 +38,7 @@ function readFile(filename, encoding, callback) {
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////
-
 readFile(options.file, 'utf8', function (err, input) {
   var output, md;
 
