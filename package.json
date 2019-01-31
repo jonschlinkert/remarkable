@@ -65,6 +65,7 @@
     "ansi": "^0.3.0",
     "benchmark": "^1.0.0",
     "commonmark": "0.12.0",
+    "coveralls": "3.0.2",
     "eslint": "5.12.1",
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
