@@ -1,7 +1,9 @@
 {
-  "ecmaFeatures": {
-    "modules": true,
-    "experimentalObjectRestSpread": true
+  "parserOptions": {
+    "ecmaFeatures": {
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    },
   },
 
   "env": {
