@@ -8,15 +8,21 @@
 
 var fs        = require('fs');
 var util      = require('util');
-var argparse  = require('./parseArgs');
+var argparse  = require('../lib/arg_parser');
 
 var Remarkable = require('..');
 
-var cli = new argparse.ArgumentParser({
-  prog: 'specsplit',
-  version: require('../package.json').version,
-  addHelp: true
-});
+var cli = new argparse.ArgumentParser(
+  {
+    prog: 'specsplit',
+    version: require('../package.json').version,
+    usage: '[{good,bad}] spec'
+  },
+  [
+    {name: 'type', optional: true, values: ['good', 'bad'], help: 'type of examples to filter' }, 
+    {name: 'spec', 'help': 'spec file to read'}
+  ]
+);
 
 var options = cli.parseArgs();
 

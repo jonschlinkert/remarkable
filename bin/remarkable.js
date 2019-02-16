@@ -5,7 +5,7 @@
 
 
 var fs = require('fs');
-var argparse = require('argparse');
+var argparse = require('../lib/arg_parser');
 
 var Remarkable = require('..');
 
@@ -14,14 +14,12 @@ var Remarkable = require('..');
 var cli = new argparse.ArgumentParser({
   prog: 'remarkable',
   version: require('../package.json').version,
-  addHelp: true
-});
-
-cli.addArgument([ 'file' ], {
-  help: 'File to read',
-  nargs: '?',
-  defaultValue: '-'
-});
+  usage: '[file]'
+},
+[
+  {name: 'file', optional: true, default: '-', help: 'File to read'}
+]
+);
 
 var options = cli.parseArgs();
 
