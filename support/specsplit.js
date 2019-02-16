@@ -6,28 +6,16 @@
 
 'use strict';
 
-
 var fs        = require('fs');
 var util      = require('util');
-var argparse  = require('argparse');
+var argparse  = require('./parseArgs');
 
 var Remarkable = require('..');
-
 
 var cli = new argparse.ArgumentParser({
   prog: 'specsplit',
   version: require('../package.json').version,
   addHelp: true
-});
-
-cli.addArgument([ 'type' ], {
-  help: 'type of examples to filter',
-  nargs: '?',
-  choices: [ 'good', 'bad' ]
-});
-
-cli.addArgument([ 'spec' ], {
-  help: 'spec file to read'
 });
 
 var options = cli.parseArgs();
@@ -72,7 +60,6 @@ readFile(options.spec, 'utf8', function (error, input) {
   input = input.replace(/→/g, '\t');
 
   input.replace(/^\.\n([\s\S]*?)^\.\n([\s\S]*?)^\.$/gm, function(__, md, html, offset, orig) {
-
     var result = {
       md: md,
       html: html,
