@@ -2,9 +2,10 @@ sudo: false
 language: node_js
 node_js:
   - node
+  - '10'
+  - '8'
   - '6'
+  - '4'
   - '0.10'
   - '0.12'
-  - 4
-  - 6
 script: make test-ci
