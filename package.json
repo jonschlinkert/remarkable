@@ -63,13 +63,18 @@
   },
   "devDependencies": {
     "ansi": "^0.3.0",
+    "autoprefixer-stylus": "^0.3.0",
     "benchmark": "^1.0.0",
+    "browserify": "*",
     "commonmark": "0.12.0",
-    "eslint": "^0.10.1",
-    "gulp-format-md": "^0.1.10",
-    "highlight.js": "^9.7.0",
+    "coveralls": "^2.11.2",
+    "eslint": "0.10.1",
+    "istanbul": "*",
+    "jade": "^1.6.0",
     "marked": "0.3.2",
-    "mocha": "*"
+    "stylus": "^0.49.1",
+    "mocha": "*",
+    "uglify-js": "*"
   },
   "keywords": [
     "commonmark",
