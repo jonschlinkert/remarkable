@@ -6,4 +6,4 @@ node_js:
   - 10
   - node
 
-script: make test-ci
+script: npm run test:ci

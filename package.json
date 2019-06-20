@@ -56,8 +56,9 @@
   },
   "scripts": {
     "lint": "eslint ./bin ./lib ./support ./test",
+    "test": "make test",
+    "test:ci": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test:coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
-    "test": "make test"
   },
   "dependencies": {
     "argparse": "~1.0.10",
