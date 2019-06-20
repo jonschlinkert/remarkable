@@ -39,8 +39,8 @@ bower install remarkable --save
 ## Usage
 
 ```js
-var Remarkable = require('remarkable');
-var md = new Remarkable();
+const Remarkable = require('remarkable');
+const md = new Remarkable();
 
 console.log(md.render('# Remarkable rulezz!'));
 // => <h1>Remarkable rulezz!</h1>
@@ -80,12 +80,13 @@ Define options in the constructor:
 
 ```js
 // Actual default values
-var md = new Remarkable({
+const md = new Remarkable({
   html:         false,        // Enable HTML tags in source
   xhtmlOut:     false,        // Use '/' to close single tags (<br />)
   breaks:       false,        // Convert '\n' in paragraphs into <br>
   langPrefix:   'language-',  // CSS language prefix for fenced blocks
   linkify:      false,        // Autoconvert URL-like text to links
+  linkTarget:   '',           // Set target to open link in
 
   // Enable some language-neutral replacement + quotes beautification
   typographer:  false,
@@ -108,8 +109,8 @@ console.log(md.render('# Remarkable rulezz!'));
 Or define options via the `.set()` method:
 
 ```js
-var Remarkable = require('remarkable');
-var md = new Remarkable();
+const Remarkable = require('remarkable');
+const md = new Remarkable();
 
 md.set({
   html: true,
@@ -133,8 +134,8 @@ active syntax rules and options for common use cases.
 Enable strict [CommonMark](http://commonmark.org/) mode with the `commonmark` preset:
 
 ```js
-var Remarkable = require('remarkable');
-var md = new Remarkable('commonmark');
+const Remarkable = require('remarkable');
+const md = new Remarkable('commonmark');
 ```
 
 #### full
@@ -142,11 +143,11 @@ var md = new Remarkable('commonmark');
 Enable all available rules (but still with default options, if not set):
 
 ```js
-var Remarkable = require('remarkable');
-var md = new Remarkable('full');
+const Remarkable = require('remarkable');
+const md = new Remarkable('full');
 
 // Or with options:
-var md = new Remarkable('full', {
+const md = new Remarkable('full', {
   html: true,
   linkify: true,
   typographer: true
@@ -159,12 +160,12 @@ var md = new Remarkable('full', {
 Apply syntax highlighting to fenced code blocks with the `highlight` option:
 
 ```js
-var Remarkable = require('remarkable');
-var hljs       = require('highlight.js') // https://highlightjs.org/
+const Remarkable = require('remarkable');
+const hljs       = require('highlight.js') // https://highlightjs.org/
 
 // Actual default values
-var md = new Remarkable({
-  highlight: function (str, lang) {
+const md = new Remarkable({
+  highlight(str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
         return hljs.highlight(lang, str).value;
@@ -204,7 +205,7 @@ Disabled by default:
 ### Manage rules
 
 ```js
-var md = new Remarkable();
+const md = new Remarkable();
 md.inline.ruler.enable([ 'ins', 'mark' ]);
 md.block.ruler.disable([ 'table', 'footnote' ]);
 
@@ -218,7 +219,7 @@ md = new Remarkable('full', {
 //
 // Manually enable rules, disabled by default:
 //
-var md = new Remarkable();
+const md = new Remarkable();
 md.core.ruler.enable([
   'abbr'
 ]);
@@ -242,8 +243,8 @@ Although full-weight typographical replacements are language specific, `remarkab
 provides coverage for the most common and universal use cases:
 
 ```js
-var Remarkable = require('remarkable');
-var md = new Remarkable({
+const Remarkable = require('remarkable');
+const md = new Remarkable({
   typographer: true,
   quotes: '“”‘’'
 });
@@ -275,7 +276,7 @@ more advanced or specific to your language.
 Easily load plugins with the `.use()` method:
 
 ```js
-var md = new Remarkable();
+const md = new Remarkable();
 
 md.use(plugin1)
   .use(plugin2, opts)

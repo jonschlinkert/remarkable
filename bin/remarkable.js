@@ -17,7 +17,7 @@ var cli = new argparse.ArgumentParser({
   addHelp: true
 });
 
-cli.addArgument([ 'file' ], {
+cli.addArgument([ '--file' ], {
   help: 'File to read',
   nargs: '?',
   defaultValue: '-'
@@ -74,5 +74,4 @@ readFile(options.file, 'utf8', function (err, input) {
   }
 
   process.stdout.write(output);
-  process.exit(0);
 });
