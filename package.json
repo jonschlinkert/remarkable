@@ -55,6 +55,7 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
+    "lint": "eslint ./bin ./lib ./support ./test",
     "test": "make test"
   },
   "dependencies": {
