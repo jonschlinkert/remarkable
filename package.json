@@ -56,6 +56,7 @@
   },
   "scripts": {
     "lint": "eslint ./bin ./lib ./support ./test",
+    "test:coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
     "test": "make test"
   },
   "dependencies": {
@@ -69,8 +70,9 @@
     "eslint": "^5.16.0",
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
+    "istanbul": "^0.4.5",
     "marked": "^0.6.2",
-    "mocha": "3.5.3"
+    "mocha": "^6.1.4"
   },
   "keywords": [
     "commonmark",
