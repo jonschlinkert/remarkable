@@ -30,7 +30,7 @@ coverage:
 	rm -rf coverage
 	istanbul cover node_modules/.bin/_mocha
 
-test-ci: lint
+test-ci:
 	istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 
 gh-pages:
