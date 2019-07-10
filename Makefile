@@ -22,16 +22,15 @@ lint:
 	eslint --reset ./bin ./lib ./support ./test
 
 test:
-	NODE_ENV=test mocha -R spec -r esm
+	NODE_ENV=test mocha -R spec
 	echo "CommonMark stat:\n"
 	./support/specsplit.js test/fixtures/commonmark/spec.txt
 
 coverage:
-	rm -rf coverage
-	istanbul cover node_modules/.bin/_mocha
+	yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls
 
 test-ci:
-	istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+	nyc mocha -R spec --bail
 
 gh-pages:
 	if [ "git branch --list gh-pages" ]; then \

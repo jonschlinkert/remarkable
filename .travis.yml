@@ -7,4 +7,5 @@ node_js:
   - '0.12'
   - 4
   - 6
-script: make test-ci
+script: yarn test-ci
+after_success: yarn coverage

@@ -55,7 +55,9 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "test-ci": "nyc mocha -R spec --bail",
+    "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "argparse": "~0.1.15",
@@ -69,6 +71,7 @@
     "highlight.js": "^9.7.0",
     "marked": "0.3.2",
     "mocha": "*",
+    "nyc": "^14.1.1",
     "rollup": "^1.16.7",
     "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-node-resolve": "^5.2.0",
