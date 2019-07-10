@@ -68,7 +68,12 @@
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
     "marked": "0.3.2",
-    "mocha": "*"
+    "mocha": "*",
+    "rollup": "^1.16.7",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "uglify-js": "^3.6.0"
   },
   "keywords": [
     "commonmark",
