@@ -6,6 +6,7 @@
 test/actual
 actual
 coverage
+.nyc_output
 
 # npm
 node_modules

@@ -55,7 +55,9 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "test-ci": "nyc mocha -R spec --bail",
+    "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "argparse": "~0.1.15",
@@ -68,7 +70,8 @@
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
     "marked": "0.3.2",
-    "mocha": "*"
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
   },
   "keywords": [
     "commonmark",
