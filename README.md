@@ -24,12 +24,6 @@ __[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
 npm install remarkable --save
 ```
 
-**bower:**
-
-```bash
-bower install remarkable --save
-```
-
 **browser (CDN):**
 
 - [jsDeliver CDN](http://www.jsdelivr.com/#!remarkable "jsDelivr CDN")
