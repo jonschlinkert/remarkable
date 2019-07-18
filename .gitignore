@@ -14,8 +14,8 @@ npm-debug.log
 
 # misc
 _gh_pages
-bower_components
 vendor
 temp
 tmp
 TODO.md
+dist
