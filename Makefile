@@ -21,7 +21,7 @@ demo: lint
 lint:
 	eslint --reset ./bin ./lib ./support ./test
 
-test: lint
+test:
 	NODE_ENV=test mocha -R spec
 	echo "CommonMark stat:\n"
 	./support/specsplit.js test/fixtures/commonmark/spec.txt
@@ -49,17 +49,9 @@ publish:
 	git tag ${NPM_VERSION} && git push origin ${NPM_VERSION}
 	npm publish ${GITHUB_PROJ}/tarball/${NPM_VERSION}
 
-browserify:
+rollup:
 	rm -rf ./dist
-	mkdir dist
-	# Browserify
-	( printf "/*! ${NPM_PACKAGE} ${NPM_VERSION} ${GITHUB_PROJ} @license MIT */" ; \
-		browserify -r ./ -s Remarkable \
-		) > dist/remarkable.js
-	# Minify
-	uglifyjs dist/remarkable.js -c -m \
-		--preamble "/*! ${NPM_PACKAGE} ${NPM_VERSION} ${GITHUB_PROJ} @license MIT */" \
-		> dist/remarkable.min.js
+	rollup -c --banner "/*! ${NPM_PACKAGE} ${NPM_VERSION} ${GITHUB_PROJ} @license MIT */"
 
 todo:
 	grep 'TODO' -n -r ./lib 2>/dev/null || test true
