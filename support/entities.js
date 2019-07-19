@@ -1,12 +1,11 @@
-#!/usr/bin/env node
+#!/usr/bin/env node -r esm
 
-'use strict';
 //
 // Markdown entities generator (from html5 entities)
 //
 
 /*eslint no-console:0*/
-var http = require('http');
+import http from 'http';
 
 function codeToUni(code) {
   var result = code.toString(16).toUpperCase();

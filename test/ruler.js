@@ -1,9 +1,5 @@
-/*global describe, it*/
-'use strict';
-
-
-var assert = require('assert');
-var Ruler  = require('../lib/ruler');
+import assert from 'assert';
+import Ruler from '../lib/ruler';
 
 describe('Ruler', function () {
 

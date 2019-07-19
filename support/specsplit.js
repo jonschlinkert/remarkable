@@ -1,22 +1,18 @@
-#!/usr/bin/env node
+#!/usr/bin/env node -r esm
 /*eslint no-console:0*/
 
 // Fixtures generator from commonmark specs. Split spec to working / not working
 // examples, or show total stat.
 
-'use strict';
-
-
-var fs        = require('fs');
-var util      = require('util');
-var argparse  = require('argparse');
-
-var Remarkable = require('..');
-
+import fs from 'fs';
+import util from 'util';
+import argparse from 'argparse';
+import Remarkable from '../lib/index.js';
+import pkg from '../package.json';
 
 var cli = new argparse.ArgumentParser({
   prog: 'specsplit',
-  version: require('../package.json').version,
+  version: pkg.version,
   addHelp: true
 });
 

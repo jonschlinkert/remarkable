@@ -1,11 +1,8 @@
-'use strict';
-
-require('mocha');
-var path = require('path');
-var utils = require('./utils');
-var Remarked = require('../');
+import path from 'path';
+import { addTests } from './utils';
+import Remarkable from '../lib/index';
 
 describe('CommonMark', function () {
-  var md = new Remarked('commonmark');
-  utils.addTests(path.join(__dirname, 'fixtures/commonmark/good.txt'), md);
+  var md = new Remarkable('commonmark');
+  addTests(path.join(__dirname, 'fixtures/commonmark/good.txt'), md);
 });

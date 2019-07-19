@@ -1,23 +1,20 @@
-/*global describe, it*/
-'use strict';
+import assert from 'assert';
+import Remarkable from '../lib/index';
 
-
-var assert     = require('assert');
-var Remarkable = require('../');
-var utils      = require('../').utils;
+const { utils } = Remarkable
 
 
 describe('Utils', function () {
 
   it('fromCodePoint', function () {
-    var fromCodePoint = require('../lib/common/utils').fromCodePoint;
+    var fromCodePoint = utils.fromCodePoint;
 
     assert.strictEqual(fromCodePoint(0x20), ' ');
     assert.strictEqual(fromCodePoint(0x1F601), '😁');
   });
 
   it('isValidEntityCode', function () {
-    var isValidEntityCode = require('../lib/common/utils').isValidEntityCode;
+    var isValidEntityCode = utils.isValidEntityCode;
 
     assert.strictEqual(isValidEntityCode(0x20), true);
     assert.strictEqual(isValidEntityCode(0xD800), false);
@@ -31,7 +28,7 @@ describe('Utils', function () {
   });
 
   it('replaceEntities', function () {
-    var replaceEntities = require('../lib/common/utils').replaceEntities;
+    var replaceEntities = utils.replaceEntities;
 
     assert.strictEqual(replaceEntities('&amp;'), '&');
     assert.strictEqual(replaceEntities('&#32;'), ' ');
@@ -43,7 +40,7 @@ describe('Utils', function () {
   });
 
   it('assign', function () {
-    var assign = require('../lib/common/utils').assign;
+    var assign = utils.assign;
 
     assert.deepEqual(assign({ a: 1 }, null, { b: 2 }), { a: 1, b: 2 });
     assert.throws(function () {
