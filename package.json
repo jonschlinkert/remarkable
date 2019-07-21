@@ -60,7 +60,7 @@
     "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
-    "argparse": "~0.1.15",
+    "argparse": "^1.0.10",
     "autolinker": "~0.28.0"
   },
   "devDependencies": {
