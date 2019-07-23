@@ -50,13 +50,15 @@
     "index.js",
     "lib"
   ],
-  "main": "index.js",
   "bin": "./bin/remarkable.js",
+  "main": "./dist/remarkable.cjs.js",
+  "module": "./dist/remarkable.esm.js",
   "engines": {
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "make test",
+    "build": "make rollup",
+    "test": "make rollup && make test",
     "test-ci": "nyc mocha -r esm -R spec --bail",
     "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls"
   },
