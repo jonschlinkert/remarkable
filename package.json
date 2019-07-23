@@ -59,7 +59,7 @@
   "scripts": {
     "build": "make rollup",
     "test": "make rollup && make test",
-    "test-ci": "nyc mocha -r esm -R spec --bail",
+    "test-ci": " make rollup && nyc mocha -r esm -R spec --bail",
     "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
