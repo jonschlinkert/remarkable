@@ -1,11 +1,11 @@
-#!/usr/bin/env node
+#!/usr/bin/env node -r esm
 
 // Build demo data for embedding into html
 
 /*eslint no-console:0*/
 
-var fs   = require('fs');
-var path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 console.log(JSON.stringify({
   self: {

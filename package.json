@@ -56,7 +56,7 @@
   },
   "scripts": {
     "test": "make test",
-    "test-ci": "nyc mocha -R spec --bail",
+    "test-ci": "nyc mocha -r esm -R spec --bail",
     "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
@@ -67,6 +67,7 @@
     "ansi": "^0.3.0",
     "benchmark": "^1.0.0",
     "commonmark": "0.12.0",
+    "esm": "^3.2.25",
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
     "marked": "0.3.2",

@@ -1,13 +1,8 @@
-/*global describe, it*/
-'use strict';
+import fs from 'fs';
+import path from 'path';
+import assert from 'assert';
 
-
-var fs = require('fs');
-var path = require('path');
-var assert = require('assert');
-
-
-function addTests(fPath, markdown, skip) {
+export function addTests(fPath, markdown, skip) {
   var input,
       stat = fs.statSync(fPath);
 
@@ -42,6 +37,3 @@ function addTests(fPath, markdown, skip) {
     });
   }
 }
-
-
-module.exports.addTests = addTests;

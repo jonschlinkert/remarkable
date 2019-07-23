@@ -12,7 +12,7 @@ CURR_HEAD   := $(firstword $(shell git show-ref --hash HEAD | cut -b -6) master)
 GITHUB_PROJ := https://github.com/jonschlinkert/${NPM_PACKAGE}
 
 
-demo: lint
+demo:
 	./support/demodata.js > demo/example.json
 	jade demo/index.jade -P --obj demo/example.json
 	stylus -u autoprefixer-stylus demo/assets/index.styl
@@ -22,7 +22,7 @@ lint:
 	eslint --reset ./bin ./lib ./support ./test
 
 test:
-	NODE_ENV=test mocha -R spec
+	NODE_ENV=test mocha -r esm -R spec
 	echo "CommonMark stat:\n"
 	./support/specsplit.js test/fixtures/commonmark/spec.txt
 

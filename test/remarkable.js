@@ -1,13 +1,6 @@
-/*global describe*/
-'use strict';
-
-
-var path = require('path');
-
-
-var utils = require('./utils');
-var Remarkable = require('../');
-
+import path from 'path';
+import { addTests } from './utils';
+import Remarkable from '../lib/index';
 
 describe('remarkable', function () {
   var md = new Remarkable('full', {
@@ -17,5 +10,5 @@ describe('remarkable', function () {
     linkify: true
   });
 
-  utils.addTests(path.join(__dirname, 'fixtures/remarkable'), md);
+  addTests(path.join(__dirname, 'fixtures/remarkable'), md);
 });
