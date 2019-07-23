@@ -1,0 +1,4 @@
+{
+  "name": "remarkable/linkify",
+  "main": "../lib/linkify.js"
+}

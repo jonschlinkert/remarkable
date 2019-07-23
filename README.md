@@ -79,7 +79,6 @@ var md = new Remarkable({
   xhtmlOut:     false,        // Use '/' to close single tags (<br />)
   breaks:       false,        // Convert '\n' in paragraphs into <br>
   langPrefix:   'language-',  // CSS language prefix for fenced blocks
-  linkify:      false,        // Autoconvert URL-like text to links
 
   // Enable some language-neutral replacement + quotes beautification
   typographer:  false,
@@ -142,7 +141,6 @@ var md = new Remarkable('full');
 // Or with options:
 var md = new Remarkable('full', {
   html: true,
-  linkify: true,
   typographer: true
 });
 ```
@@ -205,7 +203,6 @@ md.block.ruler.disable([ 'table', 'footnote' ]);
 // Enable everything
 md = new Remarkable('full', {
   html: true,
-  linkify: true,
   typographer: true,
 });
 
@@ -278,6 +275,18 @@ md.use(plugin1)
 
 Please refer to the [plugin documentation](docs/plugins.md) to create your own
 plugins.
+
+### linkify plugin
+
+Autoconvert URL-like text to links
+
+```js
+import Remarkable from 'remarkable';
+import linkify from 'remarkable/linkify';
+
+var md = new Remarkable().use(linkify);
+```
+
 
 ## References / Thanks
 

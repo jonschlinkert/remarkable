@@ -3,7 +3,6 @@
 var Remarkable = require('../../../');
 var md = new Remarkable({
   html: true,
-  linkify: true,
   typographer: true
 });
 
