@@ -1,5 +1,5 @@
-const ChildProcess = require("child_process")
-var assert = require('assert');
+import ChildProcess from "child_process";
+import assert from 'assert';
 
 // placed here to make multiline indentation easier, feel free to move if you're
 // adding more tests here
