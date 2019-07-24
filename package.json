@@ -64,7 +64,7 @@
   },
   "nyc": {
     "exclude": [
-      "dist/*.js"
+      "dist"
     ]
   },
   "dependencies": {
