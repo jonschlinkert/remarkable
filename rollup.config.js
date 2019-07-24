@@ -2,7 +2,6 @@ import path from 'path';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
-import pkg from './package.json';
 
 const name = 'Remarkable';
 const external = id => !id.startsWith('.') && !path.isAbsolute(id);
@@ -10,7 +9,7 @@ const external = id => !id.startsWith('.') && !path.isAbsolute(id);
 export default [
   {
     input: ['./lib/index.js', './lib/linkify.js'],
-    output: { file: 'dist/cjs', format: 'cjs' },
+    output: { dir: 'dist/cjs', format: 'cjs' },
     external,
     plugins: [
       commonjs(),
