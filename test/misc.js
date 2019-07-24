@@ -1,5 +1,6 @@
 import assert from 'assert';
 import Remarkable from '../lib/index';
+import linkify from '../lib/linkify';
 
 const { utils } = Remarkable
 
@@ -167,7 +168,7 @@ describe('Misc', function () {
 describe('Links validation', function () {
 
   it('Override validator, disable everything', function () {
-    var md = new Remarkable({ linkify: true });
+    var md = new Remarkable().use(linkify);
 
     md.inline.validateLink = function () { return false; };
 

@@ -7,7 +7,6 @@ describe('remarkable', function () {
     html: true,
     langPrefix: '',
     typographer: true,
-    linkify: true
   });
 
   addTests(path.join(__dirname, 'fixtures/remarkable'), md);

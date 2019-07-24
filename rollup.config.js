@@ -2,12 +2,11 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 
-const input = './lib/index.js';
 const name = 'Remarkable';
 
 export default [
   {
-    input,
+    input: './lib/umd.js',
     output: { file: 'dist/remarkable.js', format: 'umd', name },
     plugins: [
       nodeResolve(),
@@ -15,7 +14,7 @@ export default [
     ]
   },
   {
-    input,
+    input: './lib/umd.js',
     output: { file: 'dist/remarkable.min.js', format: 'umd', name },
     plugins: [
       nodeResolve(),

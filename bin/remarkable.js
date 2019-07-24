@@ -8,6 +8,7 @@ var fs = require('fs');
 var argparse = require('argparse');
 
 var Remarkable = require('..');
+var linkify = require('../linkify');
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -63,8 +64,7 @@ readFile(options.file, 'utf8', function (err, input) {
     html: true,
     xhtmlOut: true,
     typographer: true,
-    linkify: true
-  });
+  }).use(linkify);
 
   try {
     output = md.render(input);

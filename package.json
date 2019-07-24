@@ -45,6 +45,7 @@
   "license": "MIT",
   "files": [
     "bin",
+    "linkify",
     "dist",
     "index.js",
     "lib"
