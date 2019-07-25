@@ -10,16 +10,17 @@ document as an input</p>
 </blockquote>
 <p><strong>It’s not comprehensive or anything</strong></p>
 <p>Hopefully the CLI can handle it though</p>
-`
+`;
 
 describe("Remarkable CLI", function() {
   it("simple Markdown file as input", function() {
     const output = ChildProcess.execSync(
       "node -r esm ../lib/cli.js ./fixtures/cli-input.md", 
       {
-        cwd: __dirname
+        cwd: __dirname,
+        stdio: 'inherit'
       }
-    )
-    assert.strictEqual(output.toString(), desiredOutput)
-  })
-})
+    );
+    assert.strictEqual(output.toString(), desiredOutput);
+  });
+});
