@@ -10,19 +10,13 @@ export default [
   {
     input: ['./lib/index.js', './lib/linkify.js'],
     output: { dir: 'dist/cjs', format: 'cjs' },
-    external,
-    plugins: [
-      commonjs(),
-    ]
+    external
   },
 
   {
     input: ['./lib/index.js', './lib/linkify.js'],
     output: { dir: 'dist/esm', format: 'esm' },
-    external,
-    plugins: [
-      commonjs(),
-    ]
+    external
   },
 
   {
