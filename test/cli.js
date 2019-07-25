@@ -15,7 +15,7 @@ document as an input</p>
 describe("Remarkable CLI", function() {
   it("simple Markdown file as input", function() {
     const output = ChildProcess.execSync(
-      "../bin/remarkable.js ./fixtures/cli-input.md", 
+      "node -r esm ../lib/cli.js ./fixtures/cli-input.md", 
       {
         cwd: __dirname
       }
