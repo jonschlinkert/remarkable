@@ -13,14 +13,14 @@ document as an input</p>
 `;
 
 describe("Remarkable CLI", function() {
-  it("simple Markdown file as input", function() {
+  it("simple Markdown file as input", function(done) {
     const output = ChildProcess.execSync(
       "node -r esm ../lib/cli.js ./fixtures/cli-input.md", 
       {
         cwd: __dirname,
-        stdio: 'inherit'
       }
     );
     assert.strictEqual(output.toString(), desiredOutput);
+    done();
   });
 });
