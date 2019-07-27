@@ -77,3 +77,10 @@ javascript:alert(1)
 <p>javascript:alert(1)</p>
 <p>javascript:alert(1)</p>
 .
+
+
+.
+[ASCII control characters XSS](javascript:alert(1))
+.
+<p>[ASCII control characters XSS](javascript:alert(1))</p>
+.
