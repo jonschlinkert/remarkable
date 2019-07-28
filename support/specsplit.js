@@ -7,7 +7,7 @@
 import fs from 'fs';
 import util from 'util';
 import argparse from 'argparse';
-import Remarkable from '../lib/index.js';
+import { Remarkable } from '../lib/index.js';
 import pkg from '../package.json';
 
 var cli = new argparse.ArgumentParser({
