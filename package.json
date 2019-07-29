@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "argparse": "^1.0.10",
-    "autolinker": "~0.28.0"
+    "autolinker": "~3.1.0"
   },
   "devDependencies": {
     "ansi": "^0.3.0",
@@ -82,7 +82,6 @@
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "rollup": "^1.16.7",
-    "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.1"
