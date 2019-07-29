@@ -57,7 +57,9 @@
   "scripts": {
     "test": "make test",
     "test-ci": "nyc mocha -R spec --bail",
-    "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls"
+    "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls",
+    "build": "make browserify",
+    "prepublishOnly": "make browserify"
   },
   "dependencies": {
     "argparse": "~0.1.15",
@@ -66,6 +68,7 @@
   "devDependencies": {
     "ansi": "^0.3.0",
     "benchmark": "^1.0.0",
+    "browserify": "^16.3.0",
     "commonmark": "0.12.0",
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",
