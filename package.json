@@ -62,7 +62,7 @@
     "prepublishOnly": "make browserify"
   },
   "dependencies": {
-    "argparse": "~0.1.15",
+    "argparse": "^1.0.10",
     "autolinker": "~0.28.0"
   },
   "devDependencies": {
