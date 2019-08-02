@@ -5,7 +5,7 @@
 //
 
 /*eslint no-console:0*/
-import http from 'http';
+import https from 'https';
 
 function codeToUni(code) {
   var result = code.toString(16).toUpperCase();
@@ -21,7 +21,7 @@ function strToUni(str) {
   return result;
 }
 
-http.get('http://www.w3.org/TR/html5/entities.json', function (res) {
+https.get('https://html.spec.whatwg.org/entities.json', function (res) {
   var body = '';
   res.on('data', function(chunk) {
     body += chunk;
