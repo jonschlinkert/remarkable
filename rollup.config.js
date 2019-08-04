@@ -1,6 +1,5 @@
 import path from 'path';
 import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import { terser } from 'rollup-plugin-terser';
 
@@ -26,7 +25,6 @@ export default [
     output: { file: 'dist/remarkable.js', format: 'umd', name },
     plugins: [
       nodeResolve(),
-      commonjs(),
     ]
   },
 
@@ -35,7 +33,6 @@ export default [
     output: { file: 'dist/remarkable.min.js', format: 'umd', name },
     plugins: [
       nodeResolve(),
-      commonjs(),
       terser({
         output: {
           comments(node, comment) {

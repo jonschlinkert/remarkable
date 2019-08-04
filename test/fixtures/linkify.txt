@@ -42,7 +42,7 @@ properly cut domain end
 .
 www.example.org版权所有
 .
-<p><a href="http://www.example.org">www.example.org</a>版权所有</p>
+<p><a href="http://www.example.org版权所有">www.example.org版权所有</a></p>
 .
 
 
