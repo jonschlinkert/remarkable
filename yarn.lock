@@ -191,17 +191,17 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
+autolinker@^3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/autolinker/-/autolinker-3.11.0.tgz#209c4632550eed32285058eaac51f1382dae023a"
+  integrity sha512-VMTEjE3jeBK5MinTZiuVE07O4wMVmXhpzmc5sCc8cap6exsVzjmQJgtH8NqHsFru58ujUieBA9Dmwiz+E5KWEA==
+  dependencies:
+    tslib "^1.9.3"
+
 autolinker@~0.15.0:
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/autolinker/-/autolinker-0.15.3.tgz#342417d8f2f3461b14cf09088d5edf8791dc9832"
   integrity sha1-NCQX2PLzRhsUzwkIjV7fh5HcmDI=
-
-autolinker@~3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/autolinker/-/autolinker-3.1.0.tgz#b067a5038a429677a646b69f8d9eb389df197967"
-  integrity sha512-FLPmzHwLqTUZlTwXTGSM1wOcu5TrsZcOc6YPq/Kdpzp+CBNPjUzKfPvHnFx+xuPZEerY1hRY96ISAm4S1A6MTw==
-  dependencies:
-    tslib "^1.9.3"
 
 balanced-match@^1.0.0:
   version "1.0.0"
