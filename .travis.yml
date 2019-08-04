@@ -1,10 +1,17 @@
 sudo: false
 language: node_js
-node_js:
-  - 'node'
-  - '12'
-  - '10'
-  - '8'
-  - '6'
-script: yarn test-ci
+
+matrix:
+  include:
+  - node_js: 'node'
+    env: LINT=1
+  - node_js: '12'
+  - node_js: '10'
+  - node_js: '8'
+  - node_js: '6'
+
+script:
+  - yarn test-ci
+  - if [ $LINT ]; then yarn lint; fi
+
 after_success: yarn coverage
