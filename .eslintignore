@@ -3,3 +3,4 @@ coverage/
 demo/sample.js
 dist/
 node_modules/
+demo/

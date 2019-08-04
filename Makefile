@@ -18,9 +18,6 @@ demo:
 	stylus -u autoprefixer-stylus demo/assets/index.styl
 	rm -rf demo/example.json
 
-lint:
-	eslint --reset ./bin ./lib ./support ./test
-
 test:
 	NODE_ENV=test mocha -r esm -R spec
 	echo "CommonMark stat:\n"
