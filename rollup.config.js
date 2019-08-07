@@ -15,9 +15,27 @@ export default [
   },
 
   {
+    input: './lib/index.js',
+    output: { file: 'dist/cjs/index.browser.js', format: 'cjs' },
+    external,
+    plugins: [
+      nodeResolve({ extensions: ['.browser.js', '.js'] })
+    ]
+  },
+
+  {
     input: ['./lib/index.js', './lib/linkify.js'],
     output: { dir: 'dist/esm', format: 'esm' },
     external
+  },
+
+  {
+    input: './lib/index.js',
+    output: { file: 'dist/esm/index.browser.js', format: 'esm' },
+    external,
+    plugins: [
+      nodeResolve({ extensions: ['.browser.js', '.js'] })
+    ]
   },
 
   {
