@@ -1,3 +1,20 @@
+2.0.0 / 2019-08-07
+
+- bundle umd with rollup (#346)
+- remove bower support (#347)
+- decouple linkify in separate plugin (#351)
+- convert code to esm and distribute as cjs and esm bundles (#352)
+- upgrade autolinker (#356)
+- provide smaller browser version of entities (#359)
+- use named exports for public api (#354)
+
+1.7.4 / 2019-07-30
+------------------
+
+- upgrade argparse (https://github.com/jonschlinkert/remarkable/pull/349)
+- prevent a ReDoS vulnerability (#335)
+- disallow ascii control characters in URLs (#334)
+
 1.7.0 / 2016-09-27
 ------------------
 
