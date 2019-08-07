@@ -61,6 +61,7 @@
   },
   "scripts": {
     "build": "make rollup",
+    "lint": "eslint .",
     "test-browser": "yarn build && node -r esm ./test/test-browser.js && serve .",
     "test": "make test",
     "test-ci": " nyc mocha -r esm -R spec --bail",
@@ -80,6 +81,8 @@
     "ansi": "^0.3.0",
     "benchmark": "^1.0.0",
     "commonmark": "0.12.0",
+    "eslint": "^6.1.0",
+    "eslint-plugin-es5": "^1.4.1",
     "esm": "^3.2.25",
     "gulp-format-md": "^0.1.10",
     "highlight.js": "^9.7.0",

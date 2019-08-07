@@ -16,7 +16,7 @@ describe("Remarkable CLI", function() {
   this.timeout(10000);
   it("simple Markdown file as input", function(done) {
     const command = "node -r esm ../lib/cli.js ./fixtures/cli-input.md"
-    ChildProcess.exec(command, { cwd: __dirname }, (error, stdout, stderr) => {
+    ChildProcess.exec(command, { cwd: __dirname }, (error, stdout) => {
       assert.strictEqual(stdout.toString(), desiredOutput);
       done();
     });

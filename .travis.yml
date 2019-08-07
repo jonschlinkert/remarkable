@@ -5,6 +5,7 @@ node_js:
   - '12'
   - '10'
   - '8'
-  - '6'
-script: yarn test-ci
+script:
+  - yarn test-ci
+  - yarn lint
 after_success: yarn coverage

@@ -14,7 +14,7 @@ describe('linkify option', function () {
     const messages = []
     const oldWarn = console.warn;
     console.warn = message => messages.push(message);
-    var md = new Remarkable({ html: true, linkify: true });
+    new Remarkable({ html: true, linkify: true });
     console.warn = oldWarn;
     assert.deepEqual(messages, [
       `linkify option is removed. Use linkify plugin instead:\n\n` +
