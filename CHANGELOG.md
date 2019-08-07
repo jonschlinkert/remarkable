@@ -1,4 +1,5 @@
 2.0.0 / 2019-08-07
+------------------
 
 - bundle umd with rollup (#346)
 - remove bower support (#347)
