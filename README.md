@@ -112,7 +112,7 @@ console.log(md.render('# Remarkable rulezz!'));
 Or define options via the `.set()` method:
 
 ```js
-import { Remarkable } 'remarkable';
+import { Remarkable } from 'remarkable';
 
 var md = new Remarkable();
 
