@@ -293,8 +293,8 @@ plugins.
 Autoconvert URL-like text to links
 
 ```js
-import Remarkable from 'remarkable';
-import linkify from 'remarkable/linkify';
+import { Remarkable } from 'remarkable';
+import { linkify } from 'remarkable/linkify';
 
 var md = new Remarkable().use(linkify);
 ```
