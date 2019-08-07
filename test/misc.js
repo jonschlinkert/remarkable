@@ -1,8 +1,6 @@
 import assert from 'assert';
-import Remarkable from '../lib/index';
-import linkify from '../lib/linkify';
-
-const { utils } = Remarkable
+import { Remarkable, utils } from '../lib/index';
+import { linkify } from '../lib/linkify';
 
 
 describe('Utils', function () {

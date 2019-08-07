@@ -3,7 +3,7 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import json from 'rollup-plugin-json';
 import { terser } from 'rollup-plugin-terser';
 
-const name = 'Remarkable';
+const name = 'remarkable';
 const external = id => !id.startsWith('.') && !path.isAbsolute(id);
 
 export default [

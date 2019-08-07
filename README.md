@@ -33,12 +33,23 @@ npm install remarkable --save
 ## Usage
 
 ```js
-var Remarkable = require('remarkable');
+import { Remarkable } from 'remarkable';
 var md = new Remarkable();
 
 console.log(md.render('# Remarkable rulezz!'));
 // => <h1>Remarkable rulezz!</h1>
 ```
+
+or with commonjs
+
+```js
+const { Remarkable } = require('remarkable');
+var md = new Remarkable();
+
+console.log(md.render('# Remarkable rulezz!'));
+// => <h1>Remarkable rulezz!</h1>
+```
+
 
 If installed globally with `npm`:
 
@@ -101,7 +112,8 @@ console.log(md.render('# Remarkable rulezz!'));
 Or define options via the `.set()` method:
 
 ```js
-var Remarkable = require('remarkable');
+import { Remarkable } from 'remarkable';
+
 var md = new Remarkable();
 
 md.set({
@@ -126,7 +138,7 @@ active syntax rules and options for common use cases.
 Enable strict [CommonMark](http://commonmark.org/) mode with the `commonmark` preset:
 
 ```js
-var Remarkable = require('remarkable');
+import { Remarkable } from 'remarkable';
 var md = new Remarkable('commonmark');
 ```
 
@@ -135,7 +147,7 @@ var md = new Remarkable('commonmark');
 Enable all available rules (but still with default options, if not set):
 
 ```js
-var Remarkable = require('remarkable');
+import { Remarkable } from 'remarkable';
 var md = new Remarkable('full');
 
 // Or with options:
@@ -151,8 +163,8 @@ var md = new Remarkable('full', {
 Apply syntax highlighting to fenced code blocks with the `highlight` option:
 
 ```js
-var Remarkable = require('remarkable');
-var hljs       = require('highlight.js') // https://highlightjs.org/
+import { Remarkable } from 'remarkable';
+import hljs from 'highlight.js' // https://highlightjs.org/
 
 // Actual default values
 var md = new Remarkable({
@@ -233,7 +245,7 @@ Although full-weight typographical replacements are language specific, `remarkab
 provides coverage for the most common and universal use cases:
 
 ```js
-var Remarkable = require('remarkable');
+import { Remarkable } from 'remarkable';
 var md = new Remarkable({
   typographer: true,
   quotes: '“”‘’'
@@ -281,10 +293,18 @@ plugins.
 Autoconvert URL-like text to links
 
 ```js
-import Remarkable from 'remarkable';
-import linkify from 'remarkable/linkify';
+import { Remarkable } from 'remarkable';
+import { linkify } from 'remarkable/linkify';
 
 var md = new Remarkable().use(linkify);
+```
+
+### UMD
+
+UMD bundle provides linkify out of the box
+
+```js
+const { Remarkable, linkify, utils } = window.remarkable;
 ```
 
 
