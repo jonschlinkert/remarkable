@@ -39,7 +39,7 @@
     "Una Ma <maruilian11@cdnjs.com.tw> (https://github.com/maruilian11)",
     "Vitaly Puzrin <vitaly@rcdesign.ru> (http://gravatar.com/puzrin)"
   ],
-  "repository": "jonschlinkert/remarkable",
+  "repository": "https://github.com/jonschlinkert/remarkable",
   "bugs": {
     "url": "https://github.com/jonschlinkert/remarkable/issues"
   },
@@ -61,13 +61,15 @@
     "node": ">= 6.0.0"
   },
   "scripts": {
-    "build": "make rollup",
+    "build": "rm -rf dist && yarn rollup -c",
     "lint": "eslint .",
-    "test-browser": "yarn build && node -r esm ./test/test-browser.js && serve .",
-    "test": "make test",
-    "test-ci": " nyc mocha -r esm -R spec --bail",
+    "test:browser": "yarn build && node -r esm ./test/test-browser.js && serve .",
+    "test:spec": "./support/specsplit.js test/fixtures/commonmark/spec.txt",
+    "test:mocha": "mocha -r esm -R spec",
+    "test:ci": "nyc mocha -r esm -R spec --bail",
+    "test": "yarn test:mocha && yarn test:spec",
     "coverage": "yarn add coveralls@2 && nyc report --reporter=text-lcov | coveralls",
-    "prepublishOnly": "make rollup"
+    "prepublishOnly": "yarn build"
   },
   "nyc": {
     "exclude": [
