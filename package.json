@@ -58,7 +58,7 @@
     "./dist/esm/index.js": "./dist/esm/index.browser.js"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 6.0.0"
   },
   "scripts": {
     "build": "make rollup",
