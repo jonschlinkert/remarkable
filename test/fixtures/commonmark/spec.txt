@@ -1408,7 +1408,7 @@ def foo(x)
 end
 ```
 .
-<pre><code class="language-ruby">def foo(x)
+<pre class="language-ruby"><code class="language-ruby">def foo(x)
   return 3
 end
 </code></pre>
@@ -1421,7 +1421,7 @@ def foo(x)
 end
 ~~~~~~~
 .
-<pre><code class="language-ruby">def foo(x)
+<pre class="language-ruby"><code class="language-ruby">def foo(x)
   return 3
 end
 </code></pre>
@@ -1431,7 +1431,7 @@ end
 ````;
 ````
 .
-<pre><code class="language-;"></code></pre>
+<pre class="language-;"><code class="language-;"></code></pre>
 .
 
 Info strings for backtick code blocks cannot contain backticks:
@@ -3931,7 +3931,7 @@ blocks](#fenced-code-block):
 foo
 ```
 .
-<pre><code class="language-foo+bar">foo
+<pre class="language-foo+bar"><code class="language-foo+bar">foo
 </code></pre>
 .
 

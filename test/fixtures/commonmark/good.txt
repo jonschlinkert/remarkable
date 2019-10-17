@@ -1162,7 +1162,7 @@ def foo(x)
 end
 ```
 .
-<pre><code class="language-ruby">def foo(x)
+<pre class="language-ruby"><code class="language-ruby">def foo(x)
   return 3
 end
 </code></pre>
@@ -1178,7 +1178,7 @@ def foo(x)
 end
 ~~~~~~~
 .
-<pre><code class="language-ruby startline=3 $%@#$ ruby-example">def foo(x)
+<pre class="language-ruby startline=3 $%@#$ ruby-example"><code class="language-ruby startline=3 $%@#$ ruby-example">def foo(x)
   return 3
 end
 </code></pre>
@@ -1191,7 +1191,7 @@ src line: 1430
 ````;
 ````
 .
-<pre><code class="language-;"></code></pre>
+<pre class="language-;"><code class="language-;"></code></pre>
 .
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3288,7 +3288,7 @@ src line: 3929
 foo
 ```
 .
-<pre><code class="language-foo+bar">foo
+<pre class="language-foo+bar"><code class="language-foo+bar">foo
 </code></pre>
 .
 
@@ -3383,7 +3383,7 @@ src line: 4040
 foo
 ```
 .
-<pre><code class="language-föö">foo
+<pre class="language-föö"><code class="language-föö">foo
 </code></pre>
 .
 
