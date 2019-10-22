@@ -46,7 +46,7 @@ The most important methods are:
   solely of blank space)
 * `skipEmptyLines(from)`: returns the index of the first non-empty after
   `from`
-* `skiptSpaces(pos)`: returns the next non-blank position at or after `pos`
+* `skipSpaces(pos)`: returns the next non-blank position at or after `pos`
 * `skipChars(pos, code)`: returns the next position for a character different
   than `code` at or after `pos`
 * `skipCharsBack(pos, code, min)`: returns the previous position for a character
