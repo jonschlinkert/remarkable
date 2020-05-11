@@ -127,3 +127,23 @@ Minimal one-column table test:
 </tbody>
 </table>
 .
+
+escape `|` char within backtick within table test:
+
+.
+| foo | bar |
+| --- | --- |
+| `a | b` | `a || b` |
+| a | b |
+
+.
+<table>
+<thead>
+<tr><th>foo</th><th>bar</th></tr>
+</thead>
+<tbody>
+<tr><td><code>a | b</code></td><td><code>a || b</code></td></tr>
+<tr><td>a</td><td>b</td></tr>
+</tbody>
+</table>
+.
