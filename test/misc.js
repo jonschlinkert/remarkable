@@ -200,11 +200,20 @@ describe('Link target', function () {
   });
 
   it('Should add target to link when linkTarget is specified in options', function () {
-    var md = new Remarkable({ linkTarget: '_blank' });
+    var md = new Remarkable({ linkTarget: '_self' });
 
     assert.strictEqual(
       md.render('[test](http://example.com)'),
       '<p><a href="http://example.com" target="_blank">test</a></p>\n'
+    );
+  });
+
+  it('Should add rel attr when linkTarget contains _blank', function () {
+    var md = new Remarkable({ linkTarget: '_blank' });
+
+    assert.strictEqual(
+      md.render('[test](http://example.com)'),
+      '<p><a href="http://example.com" target="_blank" rel="noopener noreferrer">test</a></p>\n'
     );
   });
 
