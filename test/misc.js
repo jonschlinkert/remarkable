@@ -204,7 +204,7 @@ describe('Link target', function () {
 
     assert.strictEqual(
       md.render('[test](http://example.com)'),
-      '<p><a href="http://example.com" target="_blank">test</a></p>\n'
+      '<p><a href="http://example.com" target="_self">test</a></p>\n'
     );
   });
 
