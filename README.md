@@ -104,6 +104,7 @@ var md = new Remarkable({
 
   // Allow / Disallow html tags that are available for parsing HTML
   htmlAllowedTags: [
+    /^my-.*/,
     'my-web-component',  // Custom-tag
 
     'article',
