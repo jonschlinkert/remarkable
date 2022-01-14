@@ -5,11 +5,11 @@ only part of a line of text and emitting the [tokens][tokens] required to
 represent them. For example, a link, bold, emphasis, super/sub scripts, inline
 code, and so on.
 
-An inline rule is a function expecting two argumnents:
+An inline rule is a function expecting two arguments:
 
 1. `state`: an instance of `StateInline`
 4. `checkMode`: a flag indicating whether we should simply check if the current
-   position marks the begining of the syntax we are trying to parse.
+   position marks the beginning of the syntax we are trying to parse.
 
 The `checkMode` is here for optimization, if it's set to `true`, we can return
 `true` as soon as we are sure the present position marks the beginning of an
@@ -42,14 +42,14 @@ The most important methods are:
 ## Rule parser behaviour
 
 If `checkMode` is set to true, simply return a boolean depending on whether the
-current position should be considered has the begining of your
+current position should be considered has the beginning of your
 syntax. Otherwise, proceed with the complete parsing.
 
 NB: It is your responsibility to make sure you have reached the maximum nesting
 level allowed by comparing `state.level` and `state.options.maxNesting`.
 
 NB: If for any reason, the syntax you are trying to parse is incorrectly
-formated and you are unable to parse it, you must abort and return `false`
+formatted and you are unable to parse it, you must abort and return `false`
 without modifying `state` in any way.
 
 To completely parse a block, you will need to push new [tokens][tokens] by
@@ -57,7 +57,7 @@ calling `state.push(token)`.
 
 Once you are sure the current position marks the beginning of the syntax you are
 trying to parse, you should push an [open tag token][tokens] corresponding to
-the begining of your inline section. You will also need to find its end.
+the beginning of your inline section. You will also need to find its end.
 
 Your next decision should be whether you wish to allow other inline syntaxes to
 be nested in your content or not. If you do, you will need to invoke

@@ -22,7 +22,7 @@ Remarkable converts markdown to HTML in two steps:
 1. Parsing markdown raw text to a list of tokens
 2. Rendering the list of tokens to actual HTML code.
 
-Parsing rules are divided into three differents kind of rules
+Parsing rules are divided into three different kinds of rules
 ([core][core parsing], [block][block parsing] and [inline][inline parsing]).
 
 To add a parsing rule, you will need to get the relevant parser for your rule

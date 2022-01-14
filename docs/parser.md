@@ -5,7 +5,7 @@ responsible for separating markdown syntax from plain text. The parsers scan the
 markdown content and use various rules to produce a list of tokens.
 
 Each token represents either a piece of markdown syntax (for example, the
-begining of a fenced code block, a list item, etc.) or plain text that will be
+beginning of a fenced code block, a list item, etc.) or plain text that will be
 included as-is (escaped) in the final HTML text. The tokens will be later be
 used by the [Renderer][renderer] to produce actual HTML.
 
@@ -15,7 +15,7 @@ There are three kind of parsing rules in Remarkable:
 2. [Block rules][block]
 3. [Inline rules][inline]
 
-Each uses different datastructures and signatures. Unless you wish to modify the
+Each uses different data structures and signatures. Unless you wish to modify the
 internal workflow of Remarkable, you will most probably only deal with Block and
 Inline rules.
 
@@ -41,13 +41,13 @@ Parsing rules will usually generates at least three tokens:
 1. The start or open token marking the beginning of the markdown structure
 2. The content token (usually with type `inline` for a block rule, or `text` for
    an inline rule)
-3. The end or close token makring the end of the markdown structure
+3. The end or close token marking the end of the markdown structure
 
 ### Tag token
 
 Tag tokens are used to represent markdown syntax. Each tag token represents a
 special markdown syntax in the original markdown source. They are usually used
-for the open and close tokens. For example the "\`\`\`" at the begining of a
+for the open and close tokens. For example the "\`\`\`" at the beginning of a
 fenced block code, the start of an item list or the end of a emphasized part of
 a line.
 
@@ -68,7 +68,7 @@ A text token has a `content` property containing the text it represents.
 Inline tokens represent the content of a block structure. These tokens have two
 additional properties:
 
-* `content`: The content of the block. This might include inline mardown syntax
+* `content`: The content of the block. This might include inline markdown syntax
   which may need further processing by the inline rules.
 * `children`: This is initialized with an empty array (`[]`) and will be filled
   with the inline parser tokens as the inline parsing rules are applied.

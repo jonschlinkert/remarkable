@@ -5,16 +5,16 @@ or several full lines at once and emitting the [tokens][tokens] required to
 represent these markdown blocks. For example, block code, blockquotes, headers,
 hr, etc.
 
-A block rule is a function expecting the following argumnents:
+A block rule is a function expecting the following arguments:
 
 1. `state`: an instance of `StateBlock`
 2. `startLine`: the index of the current line
 3. `endLine`: the index of the last available line
 4. `checkMode`: a flag indicating whether we should simply check if the current
-   line marks the begining of the syntax we are trying to parse.
+   line marks the beginning of the syntax we are trying to parse.
 
 Both `startLine` and `endLine` refer to values used to index several
-informations about lines within the `state`.
+pieces of information about lines within the `state`.
 
 The `checkMode` is here for optimization, if it's set to `true`, we can return
 `true` as soon as we are sure the present line marks the beginning of a block we
@@ -66,7 +66,7 @@ proceed with the complete parsing.
 NB: It is your responsibility to make sure you have reached the maximum nesting
 level allowed by comparing `state.level` and `state.options.maxNesting`.
 
-NB: If for any reason, the block you are trying to parse is incorrectly formated
+NB: If for any reason, the block you are trying to parse is incorrectly formatted
 and you are unable to parse it, you must abort and return `false` without
 modifying `state` in any way.
 
@@ -74,7 +74,7 @@ To completely parse a block, you will need to emit additional [tokens][tokens]
 in `state.tokens`.
 
 Once you are sure the current line marks the beginning of one of "your" blocks,
-you should push an [open tag token][tokens] corresponding to the begining of
+you should push an [open tag token][tokens] corresponding to the beginning of
 your block. You will also need to find its end. Use the `state` methods to help
 you with this.
 
