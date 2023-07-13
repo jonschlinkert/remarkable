@@ -19,7 +19,7 @@ __[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
 
 # Sponsors
 
-Thanks to the following companies, organizations, and individuals for supporting the ongoing maintenance and development of {%= name %}! [Become a Sponsor](https://github.com/sponsors/jonschlinkert) to add your logo to this README, or any of [my other projects](https://github.com/jonschlinkert?tab=repositories&q=&type=&language=&sort=stargazers)
+Thanks to the following companies, organizations, and individuals for supporting the ongoing maintenance and development of Remarkable! [Become a Sponsor](https://github.com/sponsors/jonschlinkert) to add your logo to this README, or any of [my other projects](https://github.com/jonschlinkert?tab=repositories&q=&type=&language=&sort=stargazers)
 
 ## Gold Sponsors
 
