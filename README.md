@@ -15,6 +15,20 @@ __[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
 - [High speed](#benchmark)!
 - [Community plugins](https://www.npmjs.org/browse/keyword/remarkable) on npm.
 
+<br />
+
+# Sponsors
+
+Thanks to the following companies, organizations, and individuals for supporting the ongoing maintenance and development of {%= name %}! [Become a Sponsor](https://github.com/sponsors/jonschlinkert) to add your logo to this README, or any of [my other projects](https://github.com/jonschlinkert?tab=repositories&q=&type=&language=&sort=stargazers)
+
+## Gold Sponsors
+
+| [<img src="https://github.com/jonschlinkert/clone-deep/assets/383994/98036489-2cae-48a2-8d29-7dec58ea05c4" alt="https://jaake.tech/" width="100"/>](https://jaake.tech/) |
+|:---:|
+| [https://jaake.tech/](https://jaake.tech/) |
+
+<br />
+
 
 ## Install
 
