@@ -102,7 +102,64 @@ var md = new Remarkable({
 
   // Highlighter function. Should return escaped HTML,
   // or '' if the source string is not changed
-  highlight: function (/*str, lang*/) { return ''; }
+  highlight: function (/*str, lang*/) { return ''; },
+
+  // Allow / Disallow html tags that are available for parsing HTML
+  htmlAllowedTags: [
+    /^my-.*/,
+    'my-web-component',  // Custom-tag
+
+    'article',
+    'aside',
+    'button',
+    'blockquote',
+    'body',
+    'canvas',
+    'caption',
+    'col',
+    'colgroup',
+    'dd',
+    'div',
+    'dl',
+    'dt',
+    'embed',
+    'fieldset',
+    'figcaption',
+    'figure',
+    'footer',
+    'form',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'header',
+    'hgroup',
+    'hr',
+    'iframe',
+    'li',
+    'map',
+    'object',
+    'ol',
+    'output',
+    'p',
+    'pre',
+    'progress',
+    'script',
+    'section',
+    'style',
+    'table',
+    'tbody',
+    'td',
+    'textarea',
+    'tfoot',
+    'th',
+    'tr',
+    'thead',
+    'ul',
+    'video'
+  ]
 });
 
 console.log(md.render('# Remarkable rulezz!'));
