@@ -21,13 +21,13 @@ var md = new Remarkable('full', {
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        return hljs.highlight(lang, str).value;
-      } catch (__) {}
+        return hljs.highlight(str, {language: lang}).value;
+      } catch (err) {}
     }
 
     try {
       return hljs.highlightAuto(str).value;
-    } catch (__) {}
+    } catch (err) {}
 
     return ''; // use external default escaping
   }
