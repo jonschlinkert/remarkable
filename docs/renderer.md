@@ -1,6 +1,6 @@
 # Renderer
 
-Renderering is the second part of converting markdown to HTML. The renderer
+Rendering is the second part of converting markdown to HTML. The renderer
 converts the list of [tokens][parser] produced by the [Parsers][parser] to
 produce actual HTML code.
 
