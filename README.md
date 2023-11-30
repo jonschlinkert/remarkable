@@ -92,6 +92,8 @@ var md = new Remarkable({
   xhtmlOut:     false,        // Use '/' to close single tags (<br />)
   breaks:       false,        // Convert '\n' in paragraphs into <br>
   langPrefix:   'language-',  // CSS language prefix for fenced blocks
+  linkify:      true,         // autoconvert URL-like texts to links
+  linkTarget:   '',           // set target to open link in
 
   // Enable some language-neutral replacement + quotes beautification
   typographer:  false,
