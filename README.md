@@ -170,6 +170,7 @@ import hljs from 'highlight.js' // https://highlightjs.org/
 
 // Actual default values
 var md = new Remarkable({
+  langPrefix: 'hljs language-',
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
@@ -186,6 +187,7 @@ var md = new Remarkable({
 });
 ```
 
+The `langPrefix` option is required to pass the `hljs` class to the code block so that the full Highlight.js styles are applied correctly. Note that it will only work if [your fenced code block has params set, like a language param](https://github.com/jonschlinkert/remarkable/issues/224#issuecomment-339686207).
 
 ### Syntax extensions
 
